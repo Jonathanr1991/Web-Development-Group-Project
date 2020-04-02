@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var user = new Schema({
+const userSchema = new Schema({
 
     email: { 
         type: String,
@@ -36,5 +36,7 @@ var user = new Schema({
     image: {data: Buffer, contentType: String }
 
 });
+
+const user = mongoose.model('user', userSchema );
 
 module.exports = user
