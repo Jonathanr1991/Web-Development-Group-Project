@@ -21,8 +21,15 @@ connection.once('open', () => {
     console.log(" MongoDB database connection established successfully");
 })
 
+// adding model files to be able to use them
+const userRouter = require('./routes/user');
+
+
+app.use('/user', userRouter);
+
+
 
 app.listen(port, () => {
-    console.log('Server is running on port: ${port}');
+    console.log('Server is running on port:'+ port );
 })
 
