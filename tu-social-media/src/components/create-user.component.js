@@ -1,6 +1,7 @@
 import React, {component, Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Logo from "../img/Towson_logo.jpg"
 
 export default class CreateUser extends Component {
 
@@ -74,8 +75,15 @@ export default class CreateUser extends Component {
 
     render() {
         return(
-            <div>
-               <form onSubmit={this.onSubmit}>
+            <div className="container">
+            <div className="row  ">
+            
+            <img className="col-6 mt-5 center-block h-100 " src={Logo}/>
+           
+            
+            <div className="col-6">
+            <h1 className="mt-5">Sign Up</h1>
+            <form onSubmit={this.onSubmit}>
                  <div className="form-group"> 
                      <label>First Name: </label>
                      <input  type="text" required className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName} />
@@ -88,12 +96,19 @@ export default class CreateUser extends Component {
                     
                      <label> Major</label>
                      <input  type="text" required className="form-control" value={this.state.major} onChange={this.onChangeMajor} />
-          </div>
-          <div className="form-group">
-            <input type="submit" value="Create User" className="btn btn-primary" />
-          </div>
-        </form>
             </div>
+            <div className="form-group">
+              <input type="submit" value="Create User" className="btn btn-primary" />
+            </div>
+                </form>
+            
+                
+            </div>
+              
+            </div>
+            </div>
+            
+
         );
         
     }
