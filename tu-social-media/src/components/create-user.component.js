@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Logo from "../img/Towson_logo.jpg"
 
+ 
+//need to verify passwords match
+
 export default class CreateUser extends Component {
 
   
@@ -82,23 +85,26 @@ export default class CreateUser extends Component {
            
             
             <div className="col-6">
-            <h1 className="mt-5">Sign Up</h1>
+            <h1 className=" mt-5 text-center">Sign Up!</h1>
             <form onSubmit={this.onSubmit}>
-                 <div className="form-group"> 
-                     <label>First Name: </label>
-                     <input  type="text" required className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName} />
-                     <label>Last Name: </label>
-                     <input  type="text" required className="form-control" value={this.state.lastName} onChange={this.onChangeLastName} />
-                     <label>Email: </label>
-                     <input  type="text" required className="form-control" value={this.state.email} onChange={this.onChangeEmail} />
-                     <label>Password: </label>
-                     <input  type="text" required className="form-control" value={this.state.password} onChange={this.onChangePassword} />
-                    
-                     <label> Major</label>
-                     <input  type="text" required className="form-control" value={this.state.major} onChange={this.onChangeMajor} />
-            </div>
+                 
+                 <div className=" form-inline form-group">
+                 <input placeholder="First Name" type="text" required className="col form-control " value={this.state.firstName} onChange={this.onChangeFirstName} />
+                     
+                     <input  placeholder="Last Name" type="text" required className="col ml-2 form-control move-right"   value={this.state.lastName} onChange={this.onChangeLastName} />
+                     
+                     
+                 </div>
+                     
+                     
+                     <input  placeholder="Email"type="email" required className="form-control form-group" value={this.state.email} onChange={this.onChangeEmail} />
+                     
+                     <input  placeholder="Password" type="text" required className="form-control form-group" value={this.state.password} onChange={this.onChangePassword} />
+                     <input  placeholder="Verify Password" type="text" required className="form-control form-group"  />
+                     
+            
             <div className="form-group">
-              <input type="submit" value="Create User" className="btn btn-primary" />
+              <button type="submit"  className="btn  gold-color " >Create an Account</button>
             </div>
                 </form>
             
