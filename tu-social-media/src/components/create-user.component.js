@@ -1,5 +1,4 @@
 import React, {component, Component } from 'react';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Logo from "../img/Towson_logo.jpg"
 

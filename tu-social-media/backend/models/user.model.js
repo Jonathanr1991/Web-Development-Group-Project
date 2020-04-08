@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt')
 
 const userSchema = new Schema({
 
@@ -9,11 +10,15 @@ const userSchema = new Schema({
     lastName:{ type: String, required: true },
     major:{ type: String, required: false},
     bio:{ type: String, required: false },
-    isAdmin: { type: Boolean },
-    imageURL: { type: String },
+    isAdmin: { type: Boolean, default:false },
+    imageURL: { type: String, default: '../../src/img/user-profile-pic/default_profile.jpg' },
     image: {data: Buffer, contentType: String }
 
 });
+
+userSchema.methods.generateHash = function(password){
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+}
 
 const user = mongoose.model('user', userSchema );
 

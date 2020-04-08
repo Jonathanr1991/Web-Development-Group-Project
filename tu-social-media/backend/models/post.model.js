@@ -7,6 +7,7 @@ const postSchema = new Schema({
     postText: {type: String},
     postImgPath: {type: String},
     numberOfLikes: { type: int},
+    flag: {type:Boolean}
     
     
 

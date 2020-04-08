@@ -22,6 +22,10 @@ body{
 	background: gold;
 	width: 100%;
 }
+.black-color {
+	background: black;
+	color: white;
+}
 .move-right{
 	float:right;
 }

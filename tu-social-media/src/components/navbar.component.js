@@ -1,5 +1,5 @@
 import React, {component, Component } from 'react';
-import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 // need to fix why the login button gray 
 
@@ -7,6 +7,46 @@ import {Link} from 'react-router-dom';
 
 
 export default class NavBar extends Component {
+
+    constructor(props) {
+        super(props);
+    
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    
+        this.state = {
+            email: '',
+            password: '',
+            
+        }
+      }
+    onChangeEmail(e){
+        this.setState({
+            email: e.target.value
+        })
+    }
+    onChangePassword(e){
+        this.setState({
+            password: e.target.value
+        })
+    }
+    onSubmit(e){
+        e.preventDefault();
+
+        const user = {
+            email: this.state.email,
+            password: this.state.password,
+         }
+         axios.post('http://localhost:5000/user/login', user)
+         .then(res => console.log(res.data));
+    
+        this.setState({
+          
+        })
+
+    }
+
     render() {
         return (
            <div className="navbar tu-header">
@@ -20,22 +60,29 @@ export default class NavBar extends Component {
                
 
 
+                    
+                    <form onSubmit={this.onSubmit} >
+
                     <div className="row ">
+
                      <div className="h6 nav-item col">Towson Email
-                    <input className="form-control"placeholder="Email" type="mail" name="name" />
-                    <input type="checkbox"/>Stay logged in </div>
+                        <input className="form-control" placeholder="Email" type="mail" name="name" value={this.state.email} onChange={this.onChangeEmail} />
+                        <input type="checkbox"/>Stay logged in </div>
                    
                     <div  className="h6  nav-item col">Password 
-                    <input className="form-control"placeholder="Password" type="password" name="password" /><br/>
+                    <input className="form-control" placeholder="Password" type="password" name="password" value ={this.state.password} onChange={this.onChangePassword}/><br/>
 
                     <a className="h6">Forgot password?</a>
                     </div>
                     
                     <div className="col nav-item ">
-                    <buttton type="submit" className="btn btn-large form-control mt-3"> Login</buttton>
+                    <button  type="submit" className="btn black-color mt-3"> Login</button>
+                    </div>
                     </div>
 
-                    </div>
+                    </form>
+
+                    
                     
                 </div>
                 
