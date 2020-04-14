@@ -7,5 +7,5 @@ const messageSchema = new Schema({
     read: {type: Boolean },
     whenSent: {type: Date}
 });
-const message = mongoose.model('message', eventSchema );
+const message = mongoose.model('message', messageSchema );
 module.exports = message
