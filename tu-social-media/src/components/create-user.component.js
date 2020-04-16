@@ -66,14 +66,22 @@ export default class CreateUser extends Component {
         }
     
         console.log(user);
+        
     
        axios.post('http://localhost:5000/user/add', user)
-         .then(res => console.log(res.data));
+         .then(res => {
+            console.log(res.data)
+            alert(res.data)
+            
+         } );
+         
     
         this.setState({
           
         })
       }
+
+     
 
     render() {
         return(
@@ -98,12 +106,12 @@ export default class CreateUser extends Component {
                      
                      <input  placeholder="Email"type="email" required className="form-control form-group" value={this.state.email} onChange={this.onChangeEmail} />
                      
-                     <input  placeholder="Password" type="text" required className="form-control form-group" value={this.state.password} onChange={this.onChangePassword} />
-                     <input  placeholder="Verify Password" type="text" required className="form-control form-group"  />
+                     <input  placeholder="Password" minlength="8" type="password" required className="form-control form-group" value={this.state.password} onChange={this.onChangePassword} />
+                     <input  placeholder="Verify Password" minlength="8" type="password" required className="form-control form-group"  />
                      
             
             <div className="form-group">
-              <button type="submit"  className="btn  gold-color " >Create an Account</button>
+              <button type="submit"   className="btn  gold-color " >Create an Account</button>
             </div>
                 </form>
             
