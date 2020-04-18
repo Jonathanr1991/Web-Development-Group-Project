@@ -30,8 +30,8 @@ router.route('/add').post( async (req,res) => {
         });
 
         newUser.save()
-            .then(() => res.json('New User Added!'))
-            .catch(err => res.status(400).json('Error: ' + err));
+            .then(() => res.json('You have Regestired'))
+            .catch(err => res.status(400).json('Error' + err));
     }catch {
         res.status(500).send()
     }
