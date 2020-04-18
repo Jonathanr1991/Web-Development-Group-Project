@@ -26,7 +26,7 @@ const userRouter = require('./routes/user');
 const eventRouter = require('.routes/event')
 
 app.use('/user', userRouter);
-app.use('/user', eventRouter);
+app.use('/event', eventRouter);
 
 
 
