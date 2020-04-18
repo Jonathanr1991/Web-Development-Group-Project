@@ -23,9 +23,10 @@ connection.once('open', () => {
 
 // adding model files to be able to use them
 const userRouter = require('./routes/user');
-
+const eventRouter = require('.routes/event')
 
 app.use('/user', userRouter);
+app.use('/user', eventRouter);
 
 
 
