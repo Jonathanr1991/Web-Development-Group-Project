@@ -11,16 +11,37 @@ app.use(cors());
 app.use(express.json());
 
 //connects mongo to mongodb atlas
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
+const uri = "d"; //process.env.ATLAS_URI;
+mongoose //try to connect to cloud, then try local, then just wait for cloud connection
+    .connect(uri, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+    });
+
+var connection = mongoose.connection;
+
+connection.on("error", (err) => {
+    console.log(
+        "Got error connecting MongoDB instance at " + uri + " [" + err + "]"
+    );
+    console.log("Attempting to connect to MongoDB (via Mongoose) locally...");
+    mongoose.connect("mongodb://localhost:27017/c484g3test", {
+        //not sure what the idiomatic way of doing a backup connection is
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+    });
+    connection.on("error", () => {
+        console.log(
+            "mongoose couldn't connect to local server either, exiting"
+        );
+        process.kill(1);
+    });
 });
-const connection = mongoose.connection;
 
 connection.once("open", () => {
-    console.log(" MongoDB database connection established successfully");
+    console.log("MongoDB database connection established successfully");
 });
 
 // adding model files to be able to use them
@@ -31,5 +52,5 @@ app.use("/user", userRouter);
 app.use("/event", eventRouter);
 
 app.listen(port, () => {
-    console.log("Server is running on port:" + port);
+    console.log("Server is running on port: " + port);
 });
