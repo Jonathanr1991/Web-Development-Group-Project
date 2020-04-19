@@ -30,7 +30,7 @@ router.route('/add').post( async (req,res) => {
         });
 
         newUser.save()
-            .then(() => res.json('You have Regestired'))
+            .then(() => res.json('You have Registered'))
             .catch(err => res.status(400).json('Error' + err));
     }catch {
         res.status(500).send()
@@ -45,9 +45,9 @@ router.route('/login').post(async (req, res) => {
     }
     try{
         if (await bcrypt.compare(req.body.password, user.password)){
-            res.send('User Logged in')
+            res.json('User Logged in')
         } else {
-            res.send('check email and password')
+            res.json('check email and password')
         }
     }catch {
         res.status(500).send()
