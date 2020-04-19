@@ -1,4 +1,4 @@
-import React, {component, Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Logo from "../img/Towson_logo.jpg"
 
@@ -74,6 +74,7 @@ export default class CreateUser extends Component {
             alert(res.data)
             
          } );
+       
          
     
         this.setState({
@@ -88,7 +89,7 @@ export default class CreateUser extends Component {
             <div className="container">
             <div className="row  ">
             
-            <img className="col-6 mt-5 center-block h-100 " src={Logo}/>
+            <img className="col-6 mt-5 center-block h-100 " alt="logo" src={Logo}/>
            
             
             <div className="col-6">
@@ -106,8 +107,8 @@ export default class CreateUser extends Component {
                      
                      <input  placeholder="Email"type="email" required className="form-control form-group" value={this.state.email} onChange={this.onChangeEmail} />
                      
-                     <input  placeholder="Password" minlength="8" type="password" required className="form-control form-group" value={this.state.password} onChange={this.onChangePassword} />
-                     <input  placeholder="Verify Password" minlength="8" type="password" required className="form-control form-group"  />
+                     <input  placeholder="Password" minLength="8" type="password" required className="form-control form-group" value={this.state.password} onChange={this.onChangePassword} />
+                     <input  placeholder="Verify Password" minLength="8" type="password" required className="form-control form-group"  />
                      
             
             <div className="form-group">
