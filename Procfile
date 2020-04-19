@@ -1,1 +1,1 @@
-web: cd tu-social-media && npm start
+web: npm start
