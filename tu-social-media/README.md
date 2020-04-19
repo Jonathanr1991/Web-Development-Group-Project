@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 'nodemon server.js'
+runs the backend server. Nodemon auto restarts server when changes are made to the codebase.
+
 ## Available Scripts
 
 In the project directory, you can run:
