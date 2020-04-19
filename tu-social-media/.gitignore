@@ -4,6 +4,7 @@
 node_modules
 */node_modules
 */data/db/*
+/backend/mongo.log
 /.pnp
 .pnp.js
 
