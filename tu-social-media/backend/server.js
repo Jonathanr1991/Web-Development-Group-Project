@@ -1,9 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
 
-
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -13,24 +12,24 @@ app.use(express.json());
 
 //connects mongo to mongodb atlas
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: true}
-    );
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+});
 const connection = mongoose.connection;
 
-connection.once('open', () => {
+connection.once("open", () => {
     console.log(" MongoDB database connection established successfully");
-})
+});
 
 // adding model files to be able to use them
-const userRouter = require('./routes/user');
-const eventRouter = require('.routes/event')
+const userRouter = require("./routes/user");
+const eventRouter = require("./routes/event");
 
-app.use('/user', userRouter);
-app.use('/event', eventRouter);
-
-
+app.use("/user", userRouter);
+app.use("/event", eventRouter);
 
 app.listen(port, () => {
-    console.log('Server is running on port:'+ port );
-})
-
+    console.log("Server is running on port:" + port);
+});
