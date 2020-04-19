@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 //connects mongo to mongodb atlas
-const uri = "d"; //process.env.ATLAS_URI;
+const uri = process.env.ATLAS_URI;
 mongoose //try to connect to cloud, then try local, then just wait for cloud connection
     .connect(uri, {
         useNewUrlParser: true,
