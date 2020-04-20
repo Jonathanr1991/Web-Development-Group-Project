@@ -11,7 +11,7 @@ module.exports = function (app) {
     );
     app.use(
         createProxyMiddleware("/user/*", {
-            target: "http://" + host || p + ":3000/",
+            target: "http://" + host + ":3000/",
         })
     );
     app.use(
