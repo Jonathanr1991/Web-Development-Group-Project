@@ -3,7 +3,7 @@ import axios from "axios";
 import Logo from "../img/Towson_logo.jpg";
 
 require("dotenv").config();
-var hostname = "http://localhost:3000";
+var hostname = "http://localhost" + (process.env.islocal ? "3000" : "");
 //need to verify passwords match
 
 export default class CreateUser extends Component {
