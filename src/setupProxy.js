@@ -2,25 +2,26 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
 require("dotenv").config();
 
+const host = process.env.host || process.env.HOST;
 module.exports = function (app) {
     app.use(
         createProxyMiddleware("/user", {
-            target: "http://" + process.env.HOST + ":3000/",
+            target: "http://" + host + ":3000/",
         })
     );
     app.use(
         createProxyMiddleware("/user/*", {
-            target: "http://" + process.env.HOST + ":3000/",
+            target: "http://" + host || p + ":3000/",
         })
     );
     app.use(
         createProxyMiddleware("/event", {
-            target: "http://" + process.env.HOST + ":3000/",
+            target: "http://" + host + ":3000/",
         })
     );
     app.use(
         createProxyMiddleware("/event/*", {
-            target: "http://" + process.env.HOST + ":3000/",
+            target: "http://" + host + ":3000/",
         })
     );
 };
