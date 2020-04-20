@@ -1,20 +1,18 @@
-const router = require('express').Router();
-let User = require('../models/user.model');  // mongoose model we created 
-const bcrypt = require('bcrypt')  // used to encrypt passwords
-
+const router = require("express").Router();
+let User = require("../models/user.model"); // mongoose model we created
+const bcrypt = require("bcrypt"); // used to encrypt passwords
 
 //used to return all users
-router.route('/').get((req, res) => {
+router.route("/").get((req, res) => {
     User.find()
-        .then(users => res.json(users))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then((users) => res.json(users))
+        .catch((err) => res.status(400).json("Error: " + err));
 });
-// used to create user 
-router.route('/add').post( async (req,res) => {
-
+// used to create user
+router.route("/add").post(async (req, res) => {
     try {
-        const salt = await bcrypt.genSalt()
-        const hashedPassword = await bcrypt.hash(req.body.password, salt)
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
         const email = req.body.email;
         const password = hashedPassword;
@@ -26,49 +24,48 @@ router.route('/add').post( async (req,res) => {
             password,
             firstName,
             lastName,
-            
         });
 
-        newUser.save()
-            .then(() => res.json('You have Regestired'))
-            .catch(err => res.status(400).json('Error' + err));
-    }catch {
-        res.status(500).send()
+        newUser
+            .save()
+            .then(() => res.json("You have Registered"))
+            .catch((err) => res.status(400).json("Error" + err));
+    } catch {
+        res.status(500).send();
     }
-
 });
 //checks if passwords are the same
-router.route('/login').post(async (req, res) => {
-    const user = await User.findOne({email: req.body.email})
+router.route("/login").post(async (req, res) => {
+    const user = await User.findOne({ email: req.body.email });
     if (user == null) {
-        return res. status(400).send('Cannot find user')
+        return res.status(400).send("Cannot find user");
     }
-    try{
-        if (await bcrypt.compare(req.body.password, user.password)){
-            res.send('User Logged in')
+    try {
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            res.send("User Logged in");
         } else {
-            res.send('check email and password')
+            res.send("check email and password");
         }
-    }catch {
-        res.status(500).send()
+    } catch {
+        res.status(500).send();
     }
-})
-//used to retrieve user information 
-router.route('/:id').get((req, res) =>{
+});
+//used to retrieve user information
+router.route("/:id").get((req, res) => {
     User.findById(req.param.id)
-        .then(user => res.json(user))
-        .catch(err => res.status(400).json('Error: ' + err));
-})
+        .then((user) => res.json(user))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
 //used to delete user
-router.route('/:id').get((req, res) =>{
+router.route("/:id").get((req, res) => {
     User.findByIdAndDelete(req.param.id)
-        .then(user => res.json('User Deleted'))
-        .catch(err => res.status(400).json('Error: ' + err));
-})
-//used for updating user table 
-router.route('/update/:id').post((req, res) =>{
+        .then((user) => res.json("User Deleted"))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+//used for updating user table
+router.route("/update/:id").post((req, res) => {
     User.findById(req.params.id)
-        .then(user => {
+        .then((user) => {
             user.email = req.body.email;
             user.password = req.body.password;
             user.firstName = req.body.firstName;
@@ -78,9 +75,9 @@ router.route('/update/:id').post((req, res) =>{
             user.imgageURL = req.body.imgageURL;
 
             user.save()
-                .then(() => res.json('User Updated!'))
-                .catch ( err => res.status(400).json('Error: ' + err));
+                .then(() => res.json("User Updated!"))
+                .catch((err) => res.status(400).json("Error: " + err));
         })
-        .catch(err => res.status(400).json('Error: ' +err));
-})
+        .catch((err) => res.status(400).json("Error: " + err));
+});
 module.exports = router;
