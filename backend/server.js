@@ -6,12 +6,12 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 3000; // || process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "build")));
 
 //connects mongo to mongodb atlas
 const uri = process.env.ATLAS_URI;
@@ -54,9 +54,9 @@ const eventRouter = require("./routes/event");
 app.use("/user", userRouter);
 app.use("/event", eventRouter);
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
+/*app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/build/index.html"));
+});*/
 
 app.listen(port, () => {
     console.log("Server is running on port: " + port);

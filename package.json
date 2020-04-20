@@ -16,8 +16,10 @@
         "react-scripts": "3.4.1"
     },
     "scripts": {
-        "start": "concurrently \"cd backend && npm start\" \"PORT=3000 react-scripts start\"",
-        "build": "concurrently \"react-scripts build\" \"cd backend && npm install\"",
+        "client": "cd backend && npm start",
+        "server": "react-scripts start",
+        "start": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
+        "build": "concurrently --kill-others-on-fail \"react-scripts build\" \"cd backend && npm install\"",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
@@ -39,5 +41,5 @@
     "engines": {
         "node": "^13.x.x"
     },
-    "proxy": "http://localhost:5000"
+    "proxy": "http://localhost:3000"
 }
