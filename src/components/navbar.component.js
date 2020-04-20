@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+var hostname = "https://thawing-escarpment-97776.herokuapp.com"; //TODO expose this in a config file somewhere else, instead of hardcoded -cd
+
 export default class NavBar extends Component {
     constructor(props) {
         super(props);
@@ -32,7 +34,7 @@ export default class NavBar extends Component {
             password: this.state.password,
         };
         axios
-            .post("http://localhost:5000/user/login", user)
+            .post(`${hostname}/user/login`, user) //was http://localhost:5000/user/login, would need to be http://localhost:3000/user/login due to new express port(/proxy)
             .then((res) => console.log(res.data));
 
         this.setState({});
