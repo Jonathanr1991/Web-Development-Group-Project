@@ -83,7 +83,8 @@ export default class CreateUser extends Component {
             <div className="container">
                 <div className="row  ">
                     <img
-                        className="col-6 mt-5 center-block h-100 "
+                        className="col-6 mt-5 center-block h-100"
+                        alt="logo"
                         src={Logo}
                     />
 
@@ -121,7 +122,7 @@ export default class CreateUser extends Component {
 
                             <input
                                 placeholder="Password"
-                                minlength="8"
+                                minLength="8"
                                 type="password"
                                 required
                                 className="form-control form-group"
@@ -130,7 +131,7 @@ export default class CreateUser extends Component {
                             />
                             <input
                                 placeholder="Verify Password"
-                                minlength="8"
+                                minLength="8"
                                 type="password"
                                 required
                                 className="form-control form-group"
