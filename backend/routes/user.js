@@ -42,9 +42,12 @@ router.route("/login").post(async (req, res) => {
     }
     try {
         if (await bcrypt.compare(req.body.password, user.password)) {
-            res.send("User Logged in");
+            res.json({
+                message: "User Logged in",
+                id: user._id,
+            });
         } else {
-            res.send("check email and password");
+            res.json("check email and password");
         }
     } catch {
         res.status(500).send();

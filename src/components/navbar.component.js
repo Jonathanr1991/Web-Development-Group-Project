@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 
-var hostname = "https://thawing-escarpment-97776.herokuapp.com"; //TODO expose this in a config file somewhere else, instead of hardcoded -cd
-
+//require("dotenv").config();
+const host = process.env.host || process.env.HOST;
+//var hostname = "https://thawing-escarpment-97776.herokuapp.com"; //TODO expose this in a config file somewhere else, instead of hardcoded -cd
 export default class NavBar extends Component {
     constructor(props) {
         super(props);
@@ -14,6 +16,7 @@ export default class NavBar extends Component {
         this.state = {
             email: "",
             password: "",
+            id: "",
         };
     }
     onChangeEmail(e) {
@@ -33,9 +36,10 @@ export default class NavBar extends Component {
             email: this.state.email,
             password: this.state.password,
         };
-        axios
-            .post(`${hostname}/user/login`, user) //was http://localhost:5000/user/login, would need to be http://localhost:3000/user/login due to new express port(/proxy)
-            .then((res) => console.log(res.data));
+        axios.post(`${host}/user/login`, user).then((res) => {
+            console.log(res.data);
+            this.state.id = res.data.id;
+        });
 
         this.setState({});
     }
@@ -48,7 +52,7 @@ export default class NavBar extends Component {
                     <h1>TU Social</h1>
                 </div>
 
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} action="/{this.state.id}">
                     <div className="row ">
                         <div className="h6 nav-item col">
                             Towson Email
