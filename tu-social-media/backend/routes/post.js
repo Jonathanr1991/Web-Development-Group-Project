@@ -43,7 +43,7 @@ router.route("/:id").get((req, res) => {
 //used to delete Post
 router.route("/:id").delete((req, res) => {
   Post.findByIdAndDelete(req.params.id)
-    .then(() => res.json("Event Deleted"))
+    .then(() => res.json("post Deleted"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 //update event information
@@ -59,7 +59,7 @@ router.route("/update/:id").post((req, res) => {
 
       event
         .save()
-        .then(() => res.json("Event added!"))
+        .then(() => res.json("Post added!"))
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));
