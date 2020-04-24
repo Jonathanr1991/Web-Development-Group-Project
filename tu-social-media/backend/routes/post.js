@@ -37,7 +37,7 @@ router.route("/add").post(async (req, res) => {
 //used to retrieve Post information
 router.route("/:id").get((req, res) => {
   Post.findById(req.params.id)
-    .then((event) => res.json(event))
+    .then((post) => res.json(post))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 //used to delete Post
@@ -47,9 +47,9 @@ router.route("/:id").delete((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 //update event information
-router.route("/update/:id").post((req, res) => {
+router.route("/update/:id").post(async(req, res) => {
   Post.findById(req.params.id)
-    .then((event) => {
+    .then((post) => {
       post.user = req.body.user;
       post.postText = req.body.postText;
       post.postImgPath = req.body.postImgPath;
@@ -57,9 +57,9 @@ router.route("/update/:id").post((req, res) => {
       post.flag = req.body.flag;
       post.comments = req.body.comments;
 
-      event
+      post
         .save()
-        .then(() => res.json("Post added!"))
+        .then(() => res.json("Post updated!"))
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));
