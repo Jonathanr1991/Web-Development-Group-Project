@@ -13,7 +13,7 @@ const postSchema = new Schema({
       postedBy: { type: Schema.Types.ObjectId, ref: 'user' },
       text: { type: String },
       time: { type: Date, default: Date.now() },
-      likes: { type: Number },
+      likes: { type: Number, default: '0' },
     },
   ],
 });

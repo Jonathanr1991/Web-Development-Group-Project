@@ -12,7 +12,7 @@ const userSchema = new Schema({
   isAdmin: { type: Boolean, default: false },
   imageURL: {
     type: String,
-    default: "../../src/img/user-profile-pic/default_profile.jpg",
+    default: "/img/user-profile-pic/default_profile.jpg",
   },
   image: { data: Buffer, contentType: String },
 });
