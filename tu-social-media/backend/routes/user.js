@@ -45,7 +45,10 @@ router.route('/login').post(async (req, res) => {
     }
     try{
         if (await bcrypt.compare(req.body.password, user.password)){
-            res.json('User Logged in')
+            res.json({
+                message: 'User Logged in',
+                id: user._id
+            })
         } else {
             res.json('check email and password')
         }
