@@ -16,6 +16,7 @@ router.route("/add").post(async (req, res) => {
         const eventImageUrl = req.body.eventImageUrl;
         const eventDescription = req.body.eventDescription;
         const guests = req.body.guests;
+        const posts = req.body.post;
 
         const newEvent = new Event({
             eventName,
@@ -24,6 +25,7 @@ router.route("/add").post(async (req, res) => {
             eventImageUrl,
             eventDescription,
             guests,
+            posts,
         });
         newEvent
             .save()
