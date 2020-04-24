@@ -52,7 +52,7 @@ router.route("/update/:id").post((req, res) => {
         Group.creationPermitter = req.body.creationPermitter;
 
       Group.save()
-        .then(() => res.json("Group added!"))
+        .then(() => res.json("Group updated!"))
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));

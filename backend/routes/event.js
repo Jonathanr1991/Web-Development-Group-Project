@@ -60,7 +60,7 @@ router.route("/update/:id").post((req, res) => {
 
             event
                 .save()
-                .then(() => res.json("Event added!"))
+                .then(() => res.json("Event updated!"))
                 .catch((err) => res.status(400).json("Error: " + err));
         })
         .catch((err) => res.status(400).json("Error: " + err));

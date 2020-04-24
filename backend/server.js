@@ -50,11 +50,13 @@ const userRouter = require("./routes/user");
 const eventRouter = require("./routes/event");
 const postRouter = require("./routes/post");
 const groupRouter = require("./routes/group");
+const threadRouter = require("./routes/thread");
 
 app.use("/user", userRouter);
 app.use("/event", eventRouter);
 app.use("/post", postRouter);
 app.use("/group", groupRouter);
+app.use("/thread", threadRouter);
 
 /*app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname + "/build/index.html"));
