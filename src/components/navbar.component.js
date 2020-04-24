@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 
-//require("dotenv").config();
-const host = process.env.host || process.env.HOST;
-//var hostname = "https://thawing-escarpment-97776.herokuapp.com"; //TODO expose this in a config file somewhere else, instead of hardcoded -cd
+var hostname = "https://thawing-escarpment-97776.herokuapp.com"; //change this to http://localhost:3000 to test locally. TODO expose this in a config file somewhere else, instead of hardcoded -cd
 export default class NavBar extends Component {
     constructor(props) {
         super(props);
@@ -36,7 +34,7 @@ export default class NavBar extends Component {
             email: this.state.email,
             password: this.state.password,
         };
-        axios.post(`${host}/user/login`, user).then((res) => {
+        axios.post(`${hostname}/user/login`, user).then((res) => {
             console.log(res.data);
             this.state.id = res.data.id;
         });

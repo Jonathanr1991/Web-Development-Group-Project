@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Logo from "../img/Towson_logo.jpg";
 
-//require("dotenv").config();
-const host = process.env.host || process.env.HOST;
-//var hostname = "https://thawing-escarpment-97776.herokuapp.com"; //TODO expose this in a config file somewhere else, instead of hardcoded -cd
+var hostname = "https://thawing-escarpment-97776.herokuapp.com"; //change this to http://localhost:3000 to test locally. TODO expose this in a config file somewhere else, instead of hardcoded -cd
 //need to verify passwords match
 
 export default class CreateUser extends Component {
@@ -67,7 +65,7 @@ export default class CreateUser extends Component {
         console.log(user);
 
         axios
-            .post(`${host}/user/add`, user) //was http://localhost:5000/user/add - would have to be http://localhost:3000/user/add to reference express now
+            .post(`${hostname}/user/add`, user) //was http://localhost:5000/user/add - would have to be http://localhost:3000/user/add to reference express now
             .then((res) => {
                 console.log(res.data);
                 alert(res.data);
