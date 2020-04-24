@@ -24,10 +24,10 @@ connection.once('open', () => {
 // adding model files to be able to use them
 const userRouter = require('./routes/user');
 const eventRouter = require('./routes/event');
-
+const postRouter = require('./routes/post');
 app.use('/user', userRouter);
 app.use('/event', eventRouter);
-
+app.use('/post', postRouter);
 
 
 app.listen(port, () => {

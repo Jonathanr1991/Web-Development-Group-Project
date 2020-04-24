@@ -53,7 +53,7 @@ router.route("/update/:id").post((req, res) => {
       event.eventName = req.body.eventName;
       event.eventLocation = req.body.eventLocation;
       event.eventTime = req.body.eventTime;
-      event.eventImage = Image(req.body.eventImage);
+      event.eventImageUrl = req.body.eventImageUrl;
       event.eventDescription = req.body.eventDescription;
 
       event
