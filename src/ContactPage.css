@@ -38,3 +38,6 @@ body{
 	.contact-form button:focus{
 		box-shadow:none;
 	}
+	.navbar-brand{
+		color: black;
+	}
