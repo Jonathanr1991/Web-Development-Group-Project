@@ -7,6 +7,10 @@ body {
   background-color:gold;
   padding: 7px 0px 3px 13%;
 }
+#logo{
+  height: 70px;
+  width: 130px;
+}
 
 .header *{
   display:inline-block;
@@ -22,17 +26,17 @@ p {
   height: 24px;
   position: relative;
   top: -4px;
-  border-raduis: 5px;
+  border-radius: 5px;
 }
 
 
 
 #inputText {
-      width: 300px;
-  border-raduis: 5px;
-    height: 22px;
-    position: relative;
-    top: 0px;
+  width: 300px;
+  border-radius: 5px;
+  height: 22px;
+  position: relative;
+  top: 0px;
   padding-left: 5px;
   font-size: 14px;
   border: 0px;
@@ -129,7 +133,5 @@ p {
 @media screen and (max-width: 1060px) {
     .header {
       opacity: 0;
-    }
-  
- 
-  
+  }
+}
