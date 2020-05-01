@@ -3,7 +3,7 @@ import logo from "../img/Towson_logo.jpg"
 import "../page.css";
 
 //Event layout page
-export default class Group extends Component {
+export default class Event extends Component {
   render(){
     return(
     <body>
