@@ -165,9 +165,9 @@ export default class CreateUser extends Component {
                                             !/.*@(students.)?towson.edu/.test(
                                                 this.state.email
                                             )) ||
-                                        (this.state.password.length >= 8 &&
-                                            this.state.password !==
-                                                this.state.verifyPassword)
+                                        this.state.password.length < 8 ||
+                                        this.state.password !==
+                                            this.state.verifyPassword
                                     }
                                     title={
                                         //set button tooltip so users somewhat know why they can't register
@@ -176,9 +176,10 @@ export default class CreateUser extends Component {
                                             this.state.email
                                         )
                                             ? "Must use Towson email"
-                                            : this.state.password.length < 8 ||
-                                              this.state.password !==
-                                                  this.state.verifyPassword
+                                            : this.state.password.length < 8
+                                            ? "Password too short"
+                                            : this.state.password !==
+                                              this.state.verifyPassword
                                             ? "Passwords must match"
                                             : ""
                                     }
