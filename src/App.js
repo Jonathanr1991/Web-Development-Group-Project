@@ -8,6 +8,7 @@ import Navbar from "./components/navbar.component";
 import UserFeed from "./components/user-feed.component";
 import UserProfile from "./components/user-profile.component";
 import Group from "./components/group-component";
+import Event from "./components/Event-component.js";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/:userId" exact component={UserFeed} />
                 <Route path="/:userId/profile" exact component={UserProfile} />
                 <Route path="/:userId/profile/group" exact component={Group}/>
+                <Route path="/:userId/profile/event" exact component={Event}/>
             </div>
         </Router>
     );
