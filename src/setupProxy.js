@@ -32,24 +32,4 @@ module.exports = function (app) {
             target: "http://" + host + ":3000/",
         })
     );
-    app.use(
-        createProxyMiddleware("/group", {
-            target: "http://" + host + ":3000/",
-        })
-    );
-    app.use(
-        createProxyMiddleware("/group/*", {
-            target: "http://" + host + ":3000/",
-        })
-    );
-    app.use(
-        createProxyMiddleware("/thread", {
-            target: "http://" + host + ":3000/",
-        })
-    );
-    app.use(
-        createProxyMiddleware("/thread/*", {
-            target: "http://" + host + ":3000/",
-        })
-    );
 };
