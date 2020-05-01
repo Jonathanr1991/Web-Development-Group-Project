@@ -2,13 +2,13 @@
 const router = require("express").Router();
 let Feedback = require("../models/feedback.model"); // mongoose model we created
 
-//used to return all posts
+//used to return all feedback
 router.route("/").get((req, res) => {
   Feedback.find()
     .then((allFeedback) => res.json(allFeedback))
     .catch((err) => res.status(400).json("Error: " + err));
 });
-// used to create a post
+// used to create feedback
 router.route("/add").post(async (req, res) => {
   try {
     const firstName = req.body.firstName;
@@ -20,7 +20,7 @@ router.route("/add").post(async (req, res) => {
       firstName,
       lastName,
       email,
-      comment
+      comment,
     });
     newFeedback
       .save()
@@ -31,20 +31,20 @@ router.route("/add").post(async (req, res) => {
   }
 });
 
-//used to retrieve Post information
+//used to retrieve Feedback information
 router.route("/:id").get((req, res) => {
   Feedback.findById(req.params.id)
     .then((post) => res.json(post))
     .catch((err) => res.status(400).json("Error: " + err));
 });
-//used to delete Post
+//used to delete Feedback
 router.route("/:id").delete((req, res) => {
   Feedback.findByIdAndDelete(req.params.id)
     .then(() => res.json("Feedback deleted!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
-//update event information
-router.route("/update/:id").post(async(req, res) => {
+//update feedback
+router.route("/update/:id").post(async (req, res) => {
   Feedback.findById(req.params.id)
     .then((feedback) => {
       feedback.firstName = req.body.firstName;
