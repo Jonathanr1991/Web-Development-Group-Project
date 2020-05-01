@@ -3,6 +3,7 @@ import logo from "../img/Towson_logo.jpg"
 import "../page.css";
 
 //Group layout page
+//need to update navigation under <ul>
 export default class Group extends Component {
   render(){
     return(
