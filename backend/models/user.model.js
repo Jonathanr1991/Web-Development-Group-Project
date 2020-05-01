@@ -14,7 +14,6 @@ const userSchema = new Schema({
     type: String,
     default: "/img/user-profile-pic/default_profile.jpg",
   },
-  image: { data: Buffer, contentType: String },
 });
 
 userSchema.methods.generateHash = function (password) {

@@ -4,7 +4,7 @@ let Post = require("../models/post.model"); // mongoose model we created
 //used to return all posts
 router.route("/").get((req, res) => {
   Post.find()
-    .then((events) => res.json(events))
+    .then((posts) => res.json(posts))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 // used to create a post

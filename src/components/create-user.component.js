@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import Logo from "../img/Towson_logo.jpg";
 
-//need to verify passwords match
-
 export default class CreateUser extends Component {
     constructor(props) {
         super(props);
@@ -12,15 +10,18 @@ export default class CreateUser extends Component {
         this.onChangeFirstName = this.onChangeFirstName.bind(this);
         this.onChangeLastName = this.onChangeLastName.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangeVerifyPassword = this.onChangeVerifyPassword.bind(this);
         this.onChangeMajor = this.onChangeMajor.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             email: "",
             password: "",
+            verifyPassword: "",
             firstName: "",
             lastName: "",
             major: "",
+            requireTowsonEmail: true, //externalizing this somewhere probably much better
         };
     }
 
@@ -32,6 +33,11 @@ export default class CreateUser extends Component {
     onChangePassword(e) {
         this.setState({
             password: e.target.value,
+        });
+    }
+    onChangeVerifyPassword(e) {
+        this.setState({
+            verifyPassword: e.target.value,
         });
     }
     onChangeFirstName(e) {
@@ -53,6 +59,19 @@ export default class CreateUser extends Component {
     onSubmit(e) {
         e.preventDefault();
 
+        if (
+            this.state.requireTowsonEmail &&
+            !/.*@(students.)?towson.edu/.test(this.state.email)
+        ) {
+            //if should match faculty or student emails
+            alert("Must use Towson email");
+            return;
+        }
+        if (this.state.password !== this.state.verifyPassword) {
+            alert("Passwords must match");
+            return;
+        }
+
         const user = {
             email: this.state.email,
             password: this.state.password,
@@ -64,7 +83,7 @@ export default class CreateUser extends Component {
         console.log(user);
 
         axios
-            .post("/user/add", user) //was http://localhost:5000/user/add - would have to be http://localhost:3000/user/add to reference express now
+            .post("/user/add", user)
             .then((res) => {
                 console.log(res.data);
                 alert(res.data);
@@ -133,12 +152,37 @@ export default class CreateUser extends Component {
                                 type="password"
                                 required
                                 className="form-control form-group"
+                                value={this.state.verifyPassword}
+                                onChange={this.onChangeVerifyPassword}
                             />
 
                             <div className="form-group">
                                 <button
                                     type="submit"
                                     className="btn  gold-color "
+                                    disabled={
+                                        (this.state.requireTowsonEmail &&
+                                            !/.*@(students.)?towson.edu/.test(
+                                                this.state.email
+                                            )) ||
+                                        this.state.password.length < 8 ||
+                                        this.state.password !==
+                                            this.state.verifyPassword
+                                    }
+                                    title={
+                                        //set button tooltip so users somewhat know why they can't register
+                                        this.state.requireTowsonEmail &&
+                                        !/.*@(students.)?towson.edu/.test(
+                                            this.state.email
+                                        )
+                                            ? "Must use Towson email"
+                                            : this.state.password.length < 8
+                                            ? "Password too short"
+                                            : this.state.password !==
+                                              this.state.verifyPassword
+                                            ? "Passwords must match"
+                                            : ""
+                                    }
                                 >
                                     Create an Account
                                 </button>
