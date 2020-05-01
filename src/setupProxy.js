@@ -52,4 +52,14 @@ module.exports = function (app) {
             target: "http://" + host + ":3000/",
         })
     );
+    app.use(
+        createProxyMiddleware("/feedback", {
+            target: "http://" + host + ":3000/",
+        })
+    );
+    app.use(
+        createProxyMiddleware("/feedback/*", {
+            target: "http://" + host + ":3000/",
+        })
+    );
 };
