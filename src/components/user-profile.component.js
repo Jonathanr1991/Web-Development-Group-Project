@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './page.css';
+import '../page.css';
 import logo from "../img/Towson_logo.jpg";
 
 //need to update navigation under <ul>
