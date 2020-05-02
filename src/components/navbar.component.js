@@ -37,11 +37,10 @@ export default class NavBar extends Component {
     axios
       .post("/user/login", user) //was http://localhost:5000/user/login, would need to be http://localhost:3000/user/login due to new express port(/proxy)
       .then((res) => {
-        if (res.data.Message == "User Logged in") {
+        if (res.data.Message === "User Logged in") {
           
           this.props.handleLogIn(true);
-          console.log(res.data.User);
-          this.props.handleUser(res.data.User);
+          this.props.handleUser(res.data.user);
         }
        
       });

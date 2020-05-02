@@ -9,7 +9,6 @@ import Navbar from "./components/navbar.component";
 import UserProfile from "./components/user-profile.component";
 import Group from "./components/group-component";
 import Event from "./components/event-component";
-import { render } from "@testing-library/react";
 import NewsFeed from "./components/news-feed.component";
 
 export default class App extends Component {
@@ -22,21 +21,20 @@ export default class App extends Component {
     };
   }
   handleLogIn(e) {
-    this.setState({ loggedIn: e });
+    this.setState({ loggedIn: !this.state.loggedIn });
   }
   handleLogOut(e) {
     
-    this.setState({ loggedIn: e });
+    this.setState({ loggedIn: !this.state.loggedIn});
   }
   handleUser(e){
     
     this.setState({user: e})
   }
-  getUserId(){
-    return this.state.user._id;
-  }
+ 
 
   render() {
+    console.log(this.state.loggedIn);
     return (
       <Router>
         <div className="container">
@@ -48,10 +46,10 @@ export default class App extends Component {
           />
           <CreateUser data={this.state} />
 
-          <NewsFeed data={this.state} getUserId={this.getUserId()}/>
+          <NewsFeed data={this.state} />
           <Route path="/:userId/profile" exact component={UserProfile} />
-          <Route path="/:userId/profile/group" exact component={Group} />
-          <Route path="/:userId/profile/event" exact component={Event} />
+          <Route path="/:userId/group" exact component={Group} />
+          <Route path="/:userId/event" exact component={Event} />
         </div>
       </Router>
     );

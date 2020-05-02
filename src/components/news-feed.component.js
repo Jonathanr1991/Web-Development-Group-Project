@@ -17,6 +17,7 @@ export default class NewsFeed extends Component {
       numberOfLikes: 0,
       flag: false,
       comments: [],
+      posts:"",
     };
   }
 
@@ -34,7 +35,7 @@ export default class NewsFeed extends Component {
   }
   onSubmit(e) {
     
-
+    e.preventDefault();
     const post = {
       user: this.props.data.user._id,
       postText: this.state.postText,
@@ -55,17 +56,16 @@ export default class NewsFeed extends Component {
       });
 
 
-      this.setState({postText: ""});
   }
   getAllPost(){
     axios.get("/post")
     .then((res) =>{
-      console.log(res.data);
+      this.setState({posts: res.data})
     })
   }
   
   render() {
-    this.getAllPost()
+    console.log(this.props.data.loggedIn);
     if (this.props.data.loggedIn) {
       
       return (
@@ -288,7 +288,7 @@ export default class NewsFeed extends Component {
                           />
                         </div>
                         <div className="col">
-                          <form action="#">
+                          
                             <div className="form-group mb-0">
                               <label
                                 className="sr-only"
@@ -305,7 +305,7 @@ export default class NewsFeed extends Component {
                                 onChange={this.onChangePostText}
                               />
                             </div>
-                          </form>
+                          
                         </div>
                       </div>
                     </div>
