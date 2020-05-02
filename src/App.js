@@ -1,4 +1,4 @@
-import React, {Component}from "react";
+import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,7 +12,7 @@ import Event from "./components/event-component";
 import { render } from "@testing-library/react";
 import NewsFeed from "./components/news-feed.component";
 
-export default class App extends Component{
+export default class App extends Component {
   constructor(props) {
     super(props);
 
@@ -21,22 +21,30 @@ export default class App extends Component{
       loggedIn: false,
     };
   }
-  handleLogIn(e){
-    this.setState({loggedIn: e});
+  handleLogIn(e) {
+    this.setState({ loggedIn: e });
   }
-  handleLogOut(e){
-    this.setState({loggedIn: e});
+  handleLogOut(e) {
+    
+    this.setState({ loggedIn: e });
+  }
+  getUser(e){
+    
+    this.setState({user: e})
   }
 
-  render(){
-
+  render() {
     return (
       <Router>
         <div className="container">
-          <Navbar data={this.state} handleLogIn={this.handleLogIn.bind(this)} handleLogOut={this.handleLogOut.bind(this)}/>
+          <Navbar
+            data={this.state}
+            handleLogIn={this.handleLogIn.bind(this)}
+            handleLogOut={this.handleLogOut.bind(this)}
+          />
           <CreateUser data={this.state} />
-          
-          <NewsFeed data={this.state}/>
+
+          <NewsFeed data={this.state} />
           <Route path="/:userId/profile" exact component={UserProfile} />
           <Route path="/:userId/profile/group" exact component={Group} />
           <Route path="/:userId/profile/event" exact component={Event} />
@@ -44,7 +52,4 @@ export default class App extends Component{
       </Router>
     );
   }
-  
 }
-
-

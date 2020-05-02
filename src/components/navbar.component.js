@@ -69,7 +69,10 @@ export default class NavBar extends Component {
             />
           </div>
           <div className="h6 col nav-item ">
-            <button className="btn black-color mt-3" onClick={this.logout}> Sign Out</button>
+          <form onSubmit={this.logout}>
+            <button type="submit" className="btn black-color mt-3" > Sign Out</button>
+          </form>
+            
           </div>
         </div>
       );
