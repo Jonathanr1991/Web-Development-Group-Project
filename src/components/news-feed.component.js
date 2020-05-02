@@ -1,9 +1,67 @@
 import React, { Component } from "react";
 import axios from "axios";
+import pic from "../img/user-profile-pic/default_profile.jpg";
 
 export default class NewsFeed extends Component {
+  constructor(props) {
+    super(props);
+    this.onChangeNumberOfLikes = this.onChangeNumberOfLikes.bind(this);
+    this.onChangePostText = this.onChangePostText.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    
+
+    this.state = {
+      user: "",
+      postText: "",
+      postImgPath: "",
+      numberOfLikes: 0,
+      flag: false,
+      comments: [],
+    };
+  }
+
+  onChangePostText(e) {
+    this.setState({
+      postText: e.target.value,
+    });
+  }
+ 
+
+  onChangeNumberOfLikes(e) {
+    this.setState({
+      numberOfLikes: e.target.value,
+    });
+  }
+  onSubmit(e) {
+    
+
+    const post = {
+      user: this.props.data.user._id,
+      postText: this.state.postText,
+      postImgPath: this.state.postImgPath,
+      numberOfLikes: this.state.numberOfLikes,
+      flag: this.state.flag,
+      comments: this.state.comments,
+    };
+
+    axios
+      .post("/post/add", post)
+      .then((res) => {
+        console.log(res.data);
+        alert(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
+      this.setState({postText: ""});
+  }
+  
   render() {
+    
     if (this.props.data.loggedIn) {
+      
       return (
         <div>
           <link
@@ -22,9 +80,12 @@ export default class NewsFeed extends Component {
           <div className="col ">
             <div className="row">
               <div className="col">
-              <div className="card my-3">
+                <div className="card my-3">
                   <div className="card-body p-2">
-                    <div className="h6">{this.props.data.user.firstName} {this.props.data.user.lastName}</div>
+                    <div className="h3">
+                      {this.props.data.user.firstName}{" "}
+                      {this.props.data.user.lastName}
+                    </div>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">
@@ -42,7 +103,7 @@ export default class NewsFeed extends Component {
                           <img
                             className="rounded-circle"
                             width={45}
-                            src="https://picsum.photos/80/80/?random?image=5"
+                            src={pic}
                             alt=""
                           />
                         </div>
@@ -52,8 +113,6 @@ export default class NewsFeed extends Component {
                         </div>
                       </div>
                     </div>
-
-                   
                   </div>
                 </div>
                 <div className="card my-3">
@@ -197,83 +256,87 @@ export default class NewsFeed extends Component {
                 </div>
               </div>
               <div className="col-lg-8">
-                <div className="card my-3">
-                  <div className="card-header">
-                    <ul className="nav nav-tabs card-header-tabs nav-fill">
-                      <li className="nav-item">
-                        <a className="nav-link active" href="#">
-                          Create Post
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link" href="#">
-                          Upload Photo/Video
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="card-body py-2">
-                    <div className="d-flex">
-                      <div>
-                        <img
-                          className="rounded-circle"
-                          width={50}
-                          src="https://picsum.photos/80/80/?random?image=4"
-                        />
+                <form onSubmit= {this.onSubmit}>
+                  <div className="card my-3">
+                    <div className="card-header">
+                      <ul className="nav nav-tabs card-header-tabs nav-fill">
+                        <li className="nav-item">
+                          <a className="nav-link active" href="#">
+                            Create Post
+                          </a>
+                        </li>
+                        <li className="nav-item">
+                          <a className="nav-link" href="#">
+                            Upload Photo
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="card-body py-2">
+                      <div className="d-flex">
+                        <div>
+                          <img
+                            className="rounded-circle"
+                            width={50}
+                            src="https://picsum.photos/80/80/?random?image=4"
+                          />
+                        </div>
+                        <div className="col">
+                          <form action="#">
+                            <div className="form-group mb-0">
+                              <label
+                                className="sr-only"
+                                htmlFor="exampleFormControlTextarea1"
+                              >
+                                Example textarea
+                              </label>
+                              <textarea
+                                className="form-control border-0"
+                                id="exampleFormControlTextarea1"
+                                rows={2}
+                                placeholder="What are you thinking?"
+                                defaultValue={""}
+                                onChange={this.onChangePostText}
+                              />
+                            </div>
+                          </form>
+                        </div>
                       </div>
-                      <div className="col">
-                        <form action="#">
-                          <div className="form-group mb-0">
-                            <label
-                              className="sr-only"
-                              htmlFor="exampleFormControlTextarea1"
-                            >
-                              Example textarea
-                            </label>
-                            <textarea
-                              className="form-control border-0"
-                              id="exampleFormControlTextarea1"
-                              rows={2}
-                              placeholder="What are you thinking?"
-                              defaultValue={""}
-                            />
-                          </div>
-                        </form>
+                    </div>
+                    <div className="card-footer p-2">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div className="col">
+                          <button
+                            type="button"
+                            className="btn btn-fposts btn-block btn-sm"
+                          >
+                            {" "}
+                            <i className="fa fa-list" aria-hidden="true" />{" "}
+                            Documents
+                          </button>
+                        </div>
+                        <div className="col">
+                          <button
+                            type="button"
+                            className="btn btn-fposts btn-block btn-sm"
+                          >
+                            <i className="fa fa-picture-o" aria-hidden="true" />{" "}
+                            Photos
+                          </button>
+                        </div>
+                        <div className="col">
+                          <button
+                            type="submit"
+                            className="btn btn-fposts btn-block btn-sm"
+                          >
+                            Post
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="card-footer p-2">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="col">
-                        <button
-                          type="button"
-                          className="btn btn-fposts btn-block btn-sm"
-                        >
-                          {" "}
-                          <i className="fa fa-list" aria-hidden="true" />{" "}
-                          Documents
-                        </button>
-                      </div>
-                      <div className="col">
-                        <button
-                          type="button"
-                          className="btn btn-fposts btn-block btn-sm"
-                        >
-                          <i className="fa fa-picture-o" aria-hidden="true" />{" "}
-                          Photos/Videos
-                        </button>
-                      </div>
-                      <div className="col">
-                        <button
-                          type="button"
-                          className="btn btn-fposts btn-block btn-sm"
-                        >
-                          <i className="fa fa-user-plus" aria-hidden="true" />{" "}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </form>
+
                 {/* ITEM */}
                 <div className="card my-3">
                   <div className="card-header bg-white border-0 py-2">

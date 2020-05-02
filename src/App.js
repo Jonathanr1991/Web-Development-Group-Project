@@ -32,6 +32,9 @@ export default class App extends Component {
     
     this.setState({user: e})
   }
+  getUserId(){
+    return this.state.user._id;
+  }
 
   render() {
     return (
@@ -45,7 +48,7 @@ export default class App extends Component {
           />
           <CreateUser data={this.state} />
 
-          <NewsFeed data={this.state} />
+          <NewsFeed data={this.state} getUserId={this.getUserId()}/>
           <Route path="/:userId/profile" exact component={UserProfile} />
           <Route path="/:userId/profile/group" exact component={Group} />
           <Route path="/:userId/profile/event" exact component={Event} />
