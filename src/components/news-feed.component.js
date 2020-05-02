@@ -57,9 +57,15 @@ export default class NewsFeed extends Component {
 
       this.setState({postText: ""});
   }
+  getAllPost(){
+    axios.get("/post")
+    .then((res) =>{
+      console.log(res.data);
+    })
+  }
   
   render() {
-    
+    this.getAllPost()
     if (this.props.data.loggedIn) {
       
       return (
