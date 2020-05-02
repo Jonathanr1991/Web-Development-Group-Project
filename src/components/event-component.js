@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import logo from "../img/Towson_logo.jpg"
 import "../page.css";
 
-//Group layout page
+//Event layout page
 //need to update navigation under <ul>
-export default class Group extends Component {
+export default class Event extends Component {
   render(){
     return(
     <body>
@@ -43,11 +43,12 @@ export default class Group extends Component {
                 <div className="card">
                     <div className="card-body">
                         <img id= "EventLogo" alt = "Group Logo"/>
-                        <div className="h5">Group Name </div>
-                        <div className="h7 text-muted"></div>
-                        <div className="h7">Hosted By: 
+                        <div className="h5">Event Name </div>
+                        <div className="h6">Hosted by:</div>
+                        <div className="h7 text-muted">Date:</div>
+                        <div className="h7">Time: 
                         </div>
-                        <div className="h8"> Bio: 
+                        <div className="h8"> Description: 
 
                         </div>
                     </div>
@@ -114,7 +115,7 @@ export default class Group extends Component {
                                     <img className="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""/>
                                 </div>
                                 <div className="ml-2">
-                                    <div className="h5 m-0">Group Name</div>
+                                    <div className="h5 m-0">Event Name</div>
                                     <div className="h7 text-muted">Hosted by: </div>
                                 </div>
                             </div>
@@ -159,7 +160,7 @@ export default class Group extends Component {
                                     <img className="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""/>
                                 </div>
                                 <div className="ml-2">
-                                    <div className="h5 m-0">Group Name </div>
+                                    <div className="h5 m-0">Event Name </div>
                                     <div className="h7 text-muted">Hosted by: </div>
                                 </div>
                             </div>
@@ -205,7 +206,7 @@ export default class Group extends Component {
                                     <img className="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""/>
                                 </div>
                                 <div className="ml-2">
-                                    <div className="h5 m-0">Group Name </div>
+                                    <div className="h5 m-0">Event Name </div>
                                     <div className="h7 text-muted">Hosted by: </div>
                                 </div>
                             </div>
@@ -235,13 +236,12 @@ export default class Group extends Component {
             <div className="col-md-3">
                 <div className="card gedf-card">
                     <div className="card-body">
-                        <h5 className="card-title">Events</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">Tigerfest 2020 </h6>
+                        <h5 className="card-title">Groups</h5>
+                        <h6 className="card-subtitle mb-2 text-muted">Group1</h6>
                         <h6 className="card-subtitle mb-2 text-muted">Commencement 2020 </h6>
-                        <p className="card-text">This will be used to quickly link to the events you are interested
-                            or regarding the group. </p>
+                        <p className="card-text">This will be used to quickly link to the groups you are in.</p>
                         <a href="#" className="card-link">Invite Friends</a>
-                        <a href="#" className="card-link">Event Page</a>
+                        <a href="#" className="card-link">Group Page</a>
                     </div>
                 </div>        
             </div>
@@ -252,5 +252,3 @@ export default class Group extends Component {
     );
   }
 }
-
-
