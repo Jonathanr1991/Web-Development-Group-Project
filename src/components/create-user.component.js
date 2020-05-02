@@ -96,101 +96,109 @@ export default class CreateUser extends Component {
     }
 
     render() {
-        return (
-            <div className="container">
-                <div className="row  ">
-                    <img
-                        className="col-6 mt-5 center-block h-100"
-                        alt="logo"
-                        src={Logo}
-                    />
 
-                    <div className="col-6">
-                        <h1 className=" mt-5 text-center">Sign Up!</h1>
-                        <form onSubmit={this.onSubmit}>
-                            <div className=" form-inline form-group">
+        if(this.props.data.loggedIn){
+            return(
+                <div></div>
+            )
+        }else{
+            return (
+                <div className="container">
+                    <div className="row  ">
+                        <img
+                            className="col-6 mt-5 center-block h-100"
+                            alt="logo"
+                            src={Logo}
+                        />
+    
+                        <div className="col-6">
+                            <h1 className=" mt-5 text-center">Sign Up!</h1>
+                            <form onSubmit={this.onSubmit}>
+                                <div className=" form-inline form-group">
+                                    <input
+                                        placeholder="First Name"
+                                        type="text"
+                                        required
+                                        className="col form-control "
+                                        value={this.state.firstName}
+                                        onChange={this.onChangeFirstName}
+                                    />
+    
+                                    <input
+                                        placeholder="Last Name"
+                                        type="text"
+                                        required
+                                        className="col ml-2 form-control move-right"
+                                        value={this.state.lastName}
+                                        onChange={this.onChangeLastName}
+                                    />
+                                </div>
+    
                                 <input
-                                    placeholder="First Name"
-                                    type="text"
+                                    placeholder="Email"
+                                    type="email"
                                     required
-                                    className="col form-control "
-                                    value={this.state.firstName}
-                                    onChange={this.onChangeFirstName}
+                                    className="form-control form-group"
+                                    value={this.state.email}
+                                    onChange={this.onChangeEmail}
                                 />
-
+    
                                 <input
-                                    placeholder="Last Name"
-                                    type="text"
+                                    placeholder="Password"
+                                    minLength="8"
+                                    type="password"
                                     required
-                                    className="col ml-2 form-control move-right"
-                                    value={this.state.lastName}
-                                    onChange={this.onChangeLastName}
+                                    className="form-control form-group"
+                                    value={this.state.password}
+                                    onChange={this.onChangePassword}
                                 />
-                            </div>
-
-                            <input
-                                placeholder="Email"
-                                type="email"
-                                required
-                                className="form-control form-group"
-                                value={this.state.email}
-                                onChange={this.onChangeEmail}
-                            />
-
-                            <input
-                                placeholder="Password"
-                                minLength="8"
-                                type="password"
-                                required
-                                className="form-control form-group"
-                                value={this.state.password}
-                                onChange={this.onChangePassword}
-                            />
-                            <input
-                                placeholder="Verify Password"
-                                minLength="8"
-                                type="password"
-                                required
-                                className="form-control form-group"
-                                value={this.state.verifyPassword}
-                                onChange={this.onChangeVerifyPassword}
-                            />
-
-                            <div className="form-group">
-                                <button
-                                    type="submit"
-                                    className="btn  gold-color "
-                                    disabled={
-                                        (this.state.requireTowsonEmail &&
+                                <input
+                                    placeholder="Verify Password"
+                                    minLength="8"
+                                    type="password"
+                                    required
+                                    className="form-control form-group"
+                                    value={this.state.verifyPassword}
+                                    onChange={this.onChangeVerifyPassword}
+                                />
+    
+                                <div className="form-group">
+                                    <button
+                                        type="submit"
+                                        className="btn  gold-color "
+                                        disabled={
+                                            (this.state.requireTowsonEmail &&
+                                                !/.*@(students.)?towson.edu/.test(
+                                                    this.state.email
+                                                )) ||
+                                            this.state.password.length < 8 ||
+                                            this.state.password !==
+                                                this.state.verifyPassword
+                                        }
+                                        title={
+                                            //set button tooltip so users somewhat know why they can't register
+                                            this.state.requireTowsonEmail &&
                                             !/.*@(students.)?towson.edu/.test(
                                                 this.state.email
-                                            )) ||
-                                        this.state.password.length < 8 ||
-                                        this.state.password !==
-                                            this.state.verifyPassword
-                                    }
-                                    title={
-                                        //set button tooltip so users somewhat know why they can't register
-                                        this.state.requireTowsonEmail &&
-                                        !/.*@(students.)?towson.edu/.test(
-                                            this.state.email
-                                        )
-                                            ? "Must use Towson email"
-                                            : this.state.password.length < 8
-                                            ? "Password too short"
-                                            : this.state.password !==
-                                              this.state.verifyPassword
-                                            ? "Passwords must match"
-                                            : ""
-                                    }
-                                >
-                                    Create an Account
-                                </button>
-                            </div>
-                        </form>
+                                            )
+                                                ? "Must use Towson email"
+                                                : this.state.password.length < 8
+                                                ? "Password too short"
+                                                : this.state.password !==
+                                                  this.state.verifyPassword
+                                                ? "Passwords must match"
+                                                : ""
+                                        }
+                                    >
+                                        Create an Account
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        
     }
 }

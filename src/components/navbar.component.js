@@ -8,12 +8,12 @@ export default class NavBar extends Component {
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.logout = this.logout.bind(this);
+   
 
     this.state = {
       email: "",
       password: "",
-      loggedIn: false,
+      
     };
   }
   onChangeEmail(e) {
@@ -38,19 +38,14 @@ export default class NavBar extends Component {
       .post("/user/login", user) //was http://localhost:5000/user/login, would need to be http://localhost:3000/user/login due to new express port(/proxy)
       .then((res) => {
         if (res.data == "User Logged in") {
-          this.setState({
-            loggedIn: !this.state.loggedIn,
-          });
+          
+          this.props.handleLogIn(true);
         }
         console.log(this.state.loggedIn);
       });
   }
-  logout(e){
-      this.setState({loggedIn: !this.state.loggedIn, password: ""});
-  }
-
   render() {
-    if (this.state.loggedIn) {
+    if (this.props.data.loggedIn) {
       return (
         <div className="navbar tu-header">
           <div className="nav-brand ">

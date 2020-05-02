@@ -9,15 +9,29 @@ import UserFeed from "./components/user-feed.component";
 import UserProfile from "./components/user-profile.component";
 import Group from "./components/group-component";
 import Event from "./components/event-component";
+import { render } from "@testing-library/react";
 
 export default class App extends Component{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: "",
+      loggedIn: false,
+    };
+  }
+  handleLogIn(){
+    this.setState({loggedIn: !this.state.loggedIn});
+  }
 
   render(){
+
     return (
       <Router>
         <div className="container">
-          <Navbar />
-          <Route path="/" exact component={CreateUser} />
+          <Navbar data={this.state} handleLogIn={this.handleLogIn.bind(this)}/>
+          <CreateUser data={this.state}/>
+          
           <Route path="/:userId" exact component={UserFeed} />
           <Route path="/:userId/profile" exact component={UserProfile} />
           <Route path="/:userId/profile/group" exact component={Group} />
