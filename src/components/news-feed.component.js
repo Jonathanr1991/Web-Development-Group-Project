@@ -24,7 +24,7 @@ export default class NewsFeed extends Component {
               <div className="col">
               <div className="card my-3">
                   <div className="card-body p-2">
-                    <div className="h6">Person Logged In Name</div>
+                    <div className="h6">{this.props.data.user.firstName} {this.props.data.user.lastName}</div>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">

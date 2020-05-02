@@ -28,7 +28,7 @@ export default class App extends Component {
     
     this.setState({ loggedIn: e });
   }
-  getUser(e){
+  handleUser(e){
     
     this.setState({user: e})
   }
@@ -41,6 +41,7 @@ export default class App extends Component {
             data={this.state}
             handleLogIn={this.handleLogIn.bind(this)}
             handleLogOut={this.handleLogOut.bind(this)}
+            handleUser= {this.handleUser.bind(this)}
           />
           <CreateUser data={this.state} />
 
