@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import pic from "../img/user-profile-pic/default_profile.jpg";
+import { get } from "mongoose";
 
 export default class NewsFeed extends Component {
   constructor(props) {
@@ -8,7 +9,6 @@ export default class NewsFeed extends Component {
     this.onChangeNumberOfLikes = this.onChangeNumberOfLikes.bind(this);
     this.onChangePostText = this.onChangePostText.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    
 
     this.state = {
       user: "",
@@ -17,7 +17,7 @@ export default class NewsFeed extends Component {
       numberOfLikes: 0,
       flag: false,
       comments: [],
-      posts:"",
+      posts: [],
     };
   }
 
@@ -26,7 +26,6 @@ export default class NewsFeed extends Component {
       postText: e.target.value,
     });
   }
- 
 
   onChangeNumberOfLikes(e) {
     this.setState({
@@ -34,7 +33,6 @@ export default class NewsFeed extends Component {
     });
   }
   onSubmit(e) {
-    
     e.preventDefault();
     const post = {
       user: this.props.data.user._id,
@@ -54,20 +52,15 @@ export default class NewsFeed extends Component {
       .catch((err) => {
         console.log(err);
       });
-
-
   }
-  getAllPost(){
-    axios.get("/post")
-    .then((res) =>{
-      this.setState({posts: res.data})
-    })
+  getAllPost() {
+    axios.get("/post").then((res) => {
+      this.setState({ posts: res.data });
+    });
   }
-  
+
   render() {
-    console.log(this.props.data.loggedIn);
     if (this.props.data.loggedIn) {
-      
       return (
         <div>
           <link
@@ -262,7 +255,7 @@ export default class NewsFeed extends Component {
                 </div>
               </div>
               <div className="col-lg-8">
-                <form onSubmit= {this.onSubmit}>
+                <form onSubmit={this.onSubmit}>
                   <div className="card my-3">
                     <div className="card-header">
                       <ul className="nav nav-tabs card-header-tabs nav-fill">
@@ -288,24 +281,22 @@ export default class NewsFeed extends Component {
                           />
                         </div>
                         <div className="col">
-                          
-                            <div className="form-group mb-0">
-                              <label
-                                className="sr-only"
-                                htmlFor="exampleFormControlTextarea1"
-                              >
-                                Example textarea
-                              </label>
-                              <textarea
-                                className="form-control border-0"
-                                id="exampleFormControlTextarea1"
-                                rows={2}
-                                placeholder="What are you thinking?"
-                                defaultValue={""}
-                                onChange={this.onChangePostText}
-                              />
-                            </div>
-                          
+                          <div className="form-group mb-0">
+                            <label
+                              className="sr-only"
+                              htmlFor="exampleFormControlTextarea1"
+                            >
+                              Example textarea
+                            </label>
+                            <textarea
+                              className="form-control border-0"
+                              id="exampleFormControlTextarea1"
+                              rows={2}
+                              placeholder="What are you thinking?"
+                              defaultValue={""}
+                              onChange={this.onChangePostText}
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
