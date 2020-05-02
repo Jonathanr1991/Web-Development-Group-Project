@@ -44,6 +44,9 @@ export default class NavBar extends Component {
         console.log(this.state.loggedIn);
       });
   }
+  logout(e){
+    this.props.handleLogOut(false);
+  }
   render() {
     if (this.props.data.loggedIn) {
       return (

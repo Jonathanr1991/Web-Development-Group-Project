@@ -5,11 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
 import CreateUser from "./components/create-user.component";
 import Navbar from "./components/navbar.component";
-import UserFeed from "./components/user-feed.component";
+
 import UserProfile from "./components/user-profile.component";
 import Group from "./components/group-component";
 import Event from "./components/event-component";
 import { render } from "@testing-library/react";
+import NewsFeed from "./components/news-feed.component";
 
 export default class App extends Component{
   constructor(props) {
@@ -20,8 +21,11 @@ export default class App extends Component{
       loggedIn: false,
     };
   }
-  handleLogIn(){
-    this.setState({loggedIn: !this.state.loggedIn});
+  handleLogIn(e){
+    this.setState({loggedIn: e});
+  }
+  handleLogOut(e){
+    this.setState({loggedIn: e});
   }
 
   render(){
@@ -29,10 +33,10 @@ export default class App extends Component{
     return (
       <Router>
         <div className="container">
-          <Navbar data={this.state} handleLogIn={this.handleLogIn.bind(this)}/>
-          <CreateUser data={this.state}/>
+          <Navbar data={this.state} handleLogIn={this.handleLogIn.bind(this)} handleLogOut={this.handleLogOut.bind(this)}/>
+          <CreateUser data={this.state} />
           
-          <Route path="/:userId" exact component={UserFeed} />
+          <NewsFeed data={this.state}/>
           <Route path="/:userId/profile" exact component={UserProfile} />
           <Route path="/:userId/profile/group" exact component={Group} />
           <Route path="/:userId/profile/event" exact component={Event} />
