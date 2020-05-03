@@ -5,7 +5,7 @@ TODO - badges here (i.e. build passing etc)
 _Please note this repository as of now has no official affiliation with either Towson University nor any of its dependencies (defined as of writing (5/20) under package.json, backend/package.json, etc)._
 
 1. [Introduction](#introduction)
-   1.
+   1. [Building/deploying](#buildingdeploying)
 2. [Backend](#nodemon-serverjs)
    1. [Hosting](#hosting---incl-continuous-deployment)
    2. [CI](#continuous-integration---incl-continuous-delivery)
