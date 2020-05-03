@@ -5,11 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
 import CreateUser from "./components/create-user.component";
 import Navbar from "./components/navbar.component";
-
+import EditProfile from "./components/edit-profile.component";
 import UserProfile from "./components/user-profile.component";
 import Group from "./components/group-component";
 import Event from "./components/event-component";
 import NewsFeed from "./components/news-feed.component";
+import Chat from "./components/Chat-component";
 
 export default class App extends Component {
   constructor(props) {
@@ -18,23 +19,49 @@ export default class App extends Component {
     this.state = {
       user: "",
       loggedIn: false,
+      newsfeed: false,
+      chat: false,
+      group: false,
+      editProfile: false,
+      event: false,
     };
   }
-  handleLogIn(e) {
-    this.setState({ loggedIn: !this.state.loggedIn });
+  handleLogIn() {
+    this.setState({
+      loggedIn: true,
+      newsfeed: true,
+      chat: false,
+      group: false,
+      editProfile: false,
+      event: false,
+    });
   }
-  handleLogOut(e) {
-    
-    this.setState({ loggedIn: !this.state.loggedIn});
+  handleLogOut() {
+    this.setState({ loggedIn: false });
   }
-  handleUser(e){
-    
-    this.setState({user: e})
+  handleUser(e) {
+    this.setState({ user: e });
   }
- 
+  handleEditProfile() {
+    this.setState({
+      newsfeed: false,
+      chat: false,
+      group: false,
+      editProfile: true,
+      event: false,
+    });
+  }
+  handleChat() {
+    this.setState({
+      newsfeed: false,
+      chat: true,
+      group: false,
+      editProfile: false,
+      event: false,
+    });
+  }
 
   render() {
-    
     return (
       <Router>
         <div className="container">
@@ -42,14 +69,18 @@ export default class App extends Component {
             data={this.state}
             handleLogIn={this.handleLogIn.bind(this)}
             handleLogOut={this.handleLogOut.bind(this)}
-            handleUser= {this.handleUser.bind(this)}
+            handleUser={this.handleUser.bind(this)}
           />
           <CreateUser data={this.state} />
-
-          <NewsFeed data={this.state} />
-          <Route path="/:userId/profile" exact component={UserProfile} />
-          <Route path="/:userId/group" exact component={Group} />
-          <Route path="/:userId/event" exact component={Event} />
+          <EditProfile data={this.state} />
+          <NewsFeed
+            data={this.state}
+            handleEditProfile={this.handleEditProfile.bind(this)}
+            handleChat={this.handleChat.bind(this)}
+          />
+          <Chat data={this.state} />
+          <Route path="/group" exact component={Group} />
+          <Route path="/event" exact component={Event} />
         </div>
       </Router>
     );
