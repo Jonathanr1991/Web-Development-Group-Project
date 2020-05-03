@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import pic from "../img/user-profile-pic/default_profile.jpg";
-import { get } from "mongoose";
+//import { get } from "mongoose";
 
 export default class NewsFeed extends Component {
   constructor(props) {
