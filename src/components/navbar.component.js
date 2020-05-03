@@ -36,10 +36,12 @@ export default class NavBar extends Component {
       .post("/user/login", user) //was http://localhost:5000/user/login, would need to be http://localhost:3000/user/login due to new express port(/proxy)
       .then((res) => {
         if (res.data.Message === "User Logged in") {
-          this.props.handleLogIn(true);
+          this.props.handleLogIn();
           this.props.handleUser(res.data.user);
         }
       });
+
+      this.setState({password: ""})
   }
   render() {
     if (this.props.data.loggedIn) {
@@ -47,7 +49,7 @@ export default class NavBar extends Component {
         <div className="navbar tu-header">
           <div className="nav-brand ">
             {" "}
-            <h1>TU Social</h1>
+           <a onClick={this.props.handleLogIn}><h1>TU Social</h1></a> 
           </div>
           <div className="h6 nav-item col">
             <a>Profile</a>

@@ -60,7 +60,7 @@ export default class NewsFeed extends Component {
   }
 
   render() {
-    if (this.props.data.loggedIn) {
+    if (this.props.data.loggedIn && this.props.data.newsfeed) {
       return (
         <div>
           <link
@@ -90,7 +90,7 @@ export default class NewsFeed extends Component {
                       <div className="d-flex justify-content-start">
                         <div className="img-circle"></div>
                         <div className="h7 ml-2">
-                          <a href="#"> Edit Profile</a>
+                          <button onClick={this.props.handleEditProfile}> Edit Profile</button>
                         </div>
                       </div>
                     </div>
@@ -107,7 +107,7 @@ export default class NewsFeed extends Component {
                           />
                         </div>
                         <div className="h7 ml-2">
-                          <a href="#">Person Profile Pic</a>
+                          <a href="#">My Profile</a>
                           <div className="text-muted"> Hace 1 Hora</div>
                         </div>
                       </div>
