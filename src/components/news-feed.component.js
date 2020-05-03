@@ -90,7 +90,7 @@ export default class NewsFeed extends Component {
                       <div className="d-flex justify-content-start">
                         <div className="img-circle"></div>
                         <div className="h7 ml-2">
-                          <button onClick={this.props.handleEditProfile}> Edit Profile</button>
+                          <a onClick={this.props.handleEditProfile}> Edit Profile</a>
                         </div>
                       </div>
                     </div>
@@ -116,7 +116,7 @@ export default class NewsFeed extends Component {
                 </div>
                 <div className="card my-3">
                   <div className="card-body p-2">
-                    <div className="h6">Messages</div>
+                    <a onClick={this.props.handleChat}>Messages</a>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">

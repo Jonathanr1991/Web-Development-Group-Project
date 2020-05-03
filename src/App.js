@@ -10,6 +10,7 @@ import UserProfile from "./components/user-profile.component";
 import Group from "./components/group-component";
 import Event from "./components/event-component";
 import NewsFeed from "./components/news-feed.component";
+import Chat from "./components/Chat-component";
 
 export default class App extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ export default class App extends Component {
     });
   }
   handleLogOut() {
-    this.setState({ loggedIn: false});
+    this.setState({ loggedIn: false });
   }
   handleUser(e) {
     this.setState({ user: e });
@@ -47,6 +48,15 @@ export default class App extends Component {
       chat: false,
       group: false,
       editProfile: true,
+      event: false,
+    });
+  }
+  handleChat() {
+    this.setState({
+      newsfeed: false,
+      chat: true,
+      group: false,
+      editProfile: false,
       event: false,
     });
   }
@@ -63,8 +73,12 @@ export default class App extends Component {
           />
           <CreateUser data={this.state} />
           <EditProfile data={this.state} />
-          <NewsFeed data={this.state} handleEditProfile={this.handleEditProfile.bind(this)} />
-          <Route path="/profile" exact component={UserProfile} />
+          <NewsFeed
+            data={this.state}
+            handleEditProfile={this.handleEditProfile.bind(this)}
+            handleChat={this.handleChat.bind(this)}
+          />
+          <Chat data={this.state} />
           <Route path="/group" exact component={Group} />
           <Route path="/event" exact component={Event} />
         </div>
