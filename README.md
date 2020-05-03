@@ -22,7 +22,15 @@ This project was conceived throughout Spring 2020 as part of a semester-long col
 
 ### Building/deploying
 
-You can run `npm start` from the root directory (so not in backend/ or src/, etc.) to run it locally, or `heroku local web` if you have heroki-cli installed.
+You can run `npm start` from the root directory (so not in backend/ or src/, etc.) to run it locally, or `heroku local web` if you have heroki-cli installed. Deploying to Heroku, as has been done here, is more complex - with respect to this repository the following (incomplete/incomprehensive) steps should get you up to speed:
+
+- set up account
+- get the heroku toolchain/CLI tools with something like `brew install` heroku or `npm install -g heroku`(?)
+- make sure project works by cding to it after git cloning/pulling it and running npm start or heroku local web (could do Postman api calls if you want to test it more thoroughly but as long as you can navigate to the usual endpoints like /, /user, /post, /event etc it should be working)
+- do `heroku login` to log into your account with CLI/browser
+- do `heroku create` after logging in, make note of the app "name" or w/e
+- do something along the lines of `git remote set-url heroku (appname).herokuapp.com`
+- do a push of the code with `git push heroku master:master` (first master means you're on master locally, second should put it on heroku's master branch)
 
 ## Backend
 
@@ -40,7 +48,7 @@ package.json in the root directory defines several command line scripts and opti
 
 WIP - intend to use Travis CI to run unit and/or integration tests for presumably both frontend and backend. It should also (help to) prevent failed deployments, once set up properly, from being sent to Heroku.
 
-### Express Server - API endpoints REST etc.
+### Express Server - API endpoints, Routes, REST etc
 
 There are endpoints accessible for _events_ (glorified posts), _feedback_ (from a sort of "contact us" page/component that's in the works), _group_ (collection of users that will be conflated with certain posts/events presumably), _post_ (simpler events - not to be confused with i.e. a POST request), _thread_, _user_, and _userSession_. These all have (or should have) respective routes and models so they can have CRUD db actions performed on them.
 
@@ -55,12 +63,6 @@ TODO - outline/explain models
 ### Mongoose
 
 This dependency is an Object Modeling tool for MongoDB, leveraged for long term data storage. It's used in conjunction with a database hosted on Mongo Atlas
-
-## Express Server
-
-The Express server was created to facilitate controlled api calls amongst other things.
-
-### Routes
 
 ## Frontend
 
