@@ -8,12 +8,10 @@ export default class NavBar extends Component {
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-   
 
     this.state = {
       email: "",
       password: "",
-      
     };
   }
   onChangeEmail(e) {
@@ -38,15 +36,10 @@ export default class NavBar extends Component {
       .post("/user/login", user) //was http://localhost:5000/user/login, would need to be http://localhost:3000/user/login due to new express port(/proxy)
       .then((res) => {
         if (res.data.Message === "User Logged in") {
-          
           this.props.handleLogIn(true);
           this.props.handleUser(res.data.user);
         }
-       
       });
-  }
-  logout(){
-    this.props.handleLogOut(false);
   }
   render() {
     if (this.props.data.loggedIn) {
@@ -70,10 +63,14 @@ export default class NavBar extends Component {
             />
           </div>
           <div className="h6 col nav-item ">
-          <form onSubmit={this.logout}>
-            <button type="submit" className="btn black-color mt-3" > Sign Out</button>
-          </form>
-            
+            <button
+              type="submit"
+              onClick={this.props.handleLogOut}
+              className="btn black-color mt-3"
+            >
+              {" "}
+              Sign Out
+            </button>
           </div>
         </div>
       );

@@ -23,7 +23,7 @@ export default class App extends Component {
   handleLogIn(e) {
     this.setState({ loggedIn: !this.state.loggedIn });
   }
-  handleLogOut(e) {
+  handleLogOut() {
     
     this.setState({ loggedIn: !this.state.loggedIn});
   }
