@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import "./page.css";
+import "./css/editProfile.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
-import "./bootstrap3.min.css";
+import "./css/bootstrap3.min.css";
 import CreateUser from "./components/create-user.component";
 import Navbar from "./components/navbar.component";
 import EditProfile from "./components/edit-profile.component";
@@ -27,6 +27,7 @@ export default class App extends Component {
       editProfile: false,
       event: false,
       profile: false,
+      posts: []
     };
   }
   handleLogIn() {
@@ -45,6 +46,9 @@ export default class App extends Component {
   }
   handleUser(e) {
     this.setState({ user: e });
+  }
+  handleGetPost(e){
+    this.setState({posts: e});
   }
   handleEditProfile() {
     this.setState({
@@ -104,6 +108,7 @@ handleEvent(){
 }
 
   render() {
+    
     return (
       <Router>
         <div className="container">
@@ -112,10 +117,12 @@ handleEvent(){
             handleLogIn={this.handleLogIn.bind(this)}
             handleLogOut={this.handleLogOut.bind(this)}
             handleUser={this.handleUser.bind(this)}
+            handleGetPost={this.handleGetPost.bind(this)}
           />
           <CreateUser data={this.state} />
           <EditProfile data={this.state} />
           <UserProfile data={this.state} />
+          
           <NewsFeed
             data={this.state}
             handleEditProfile={this.handleEditProfile.bind(this)}

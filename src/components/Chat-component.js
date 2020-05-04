@@ -4,12 +4,20 @@ export default class Chat extends Component{
     render() {
       if( this.props.data.loggedIn && this.props.data.chat){
         return (
-          <div>
-            <link type="text/css" rel="stylesheet" href="bootstrap3.min.css" />
-           
+
+          
+
+          <div className="container">
             
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+           
+            <header>
+          <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-fbook">
+            <div className="container c-navbar">
+              <a className="navbar-brand" href="#"></a>
+            </div>
+          </nav>
+        </header>
+           
             
             <div className="messaging">
               <div className="inbox_msg">
