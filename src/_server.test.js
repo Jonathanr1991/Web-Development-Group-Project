@@ -8,11 +8,10 @@ require("dotenv").config();
 
 describe("Loading express", function () {
   var server;
-  beforeEach(function () {
-    server = require("../backend/server"); //, { bustCache: true });
-    server.setTimeout(5000);
+  beforeAll(function () {
+    server = require("../backend/server-testable"); //, { bustCache: true });
   });
-  afterEach(function () {
+  afterAll(function () {
     server.close();
   });
   it("responds to /event", (done) => {
@@ -40,11 +39,11 @@ describe("Loading express", function () {
 
 describe("GET /user/whatever", () => {
   var server;
-  beforeEach(() => {
+  beforeAll(() => {
     moxios.install();
-    server = require("../backend/server"); //, { bustCache: true });
+    server = require("../backend/server-testable"); //, { bustCache: true });
   });
-  afterEach(() => {
+  afterAll(() => {
     moxios.uninstall();
     server.close();
   });
