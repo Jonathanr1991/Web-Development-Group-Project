@@ -184,7 +184,7 @@ export default class NewsFeed extends Component {
                 </div>
                 <div className="card my-3">
                   <div className="card-body p-2">
-                    <div className="h6">Groups</div>
+                    <a href="#" onClick={this.props.handleGroup}>Groups</a>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">
