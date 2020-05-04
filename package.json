@@ -12,11 +12,14 @@
         "concurrently": "^5.2.0",
         "cors": "^2.8.5",
         "http-proxy-middleware": "^1.0.3",
+        "mongodb-memory-server": "^6.5.2",
         "mongoose": "^5.9.11",
+        "moxios": "^0.4.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.1.2",
-        "react-scripts": "3.4.1"
+        "react-scripts": "3.4.1",
+        "supertest": "^4.0.2"
     },
     "scripts": {
         "client": "cd backend && npm start",
@@ -26,6 +29,7 @@
         "prod": "concurrently --kill-others-on-fail \"npm run client\" \"npm run-script serverprod\"",
         "build": "concurrently --kill-others-on-fail \"react-scripts build\" \"cd backend && npm install\"",
         "test": "react-scripts test",
+        "testprod": "npm test -- --watchAll=false",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
