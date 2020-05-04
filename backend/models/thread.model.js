@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const threadSchema = new Schema({
-    members: [{type: Schema.Types.ObjectId, ref: 'user'}],
+    members: [{type: String}],
     messages : [
         {
-            sender: {type: Schema.Types.ObjectId, ref: 'user'},
+            sender: {type: String},
             text: {type: String},
             timeStamp: {type: Date, defult: Date.now()}
         }

@@ -38,17 +38,55 @@ export default class NavBar extends Component {
         if (res.data.Message === "User Logged in") {
           this.props.handleLogIn();
           this.props.handleUser(res.data.user);
-          
+
           //get all post after User Logs in
-          axios.get("/post").then((res) => {
-            this.props.handleGetPost(res.data);
+          axios.get("/post").then((resp) => {
+            const formattedPost = [];
+
+            resp.data.forEach((post) => {
+               axios.get("/user/" + post.user).then((res) => {
+                var months = [
+                  "January",
+                  "February",
+                  "March",
+                  "April",
+                  "May",
+                  "June",
+                  "July",
+                  "August",
+                  "September",
+                  "October",
+                  "November",
+                  "December",
+                ];
+                const newPost = {
+                  _id: post._id,
+                  user: res.data.firstName + " " + res.data.lastName,
+                  postText: post.postText,
+                  time:
+                    months[new Date(post.time).getMonth()] +
+                    " " +
+                    new Date(post.time).getDate() +
+                    ", " +
+                    new Date(post.time).getFullYear() +
+                    " " +
+                    new Date(post.time).getHours() +
+                    ":" +
+                    new Date(post.time).getMinutes(),
+
+                  numberOfLikes: post.numberOfLikes,
+                };
+
+                formattedPost.push(newPost);
+              });
+            });
+
+            this.props.handleGetPost(formattedPost);
           });
         }
       });
 
-     
-
-      this.setState({password: ""})
+    this.setState({ password: "" });
   }
   render() {
     if (this.props.data.loggedIn) {
@@ -56,21 +94,21 @@ export default class NavBar extends Component {
         <div className="navbar tu-header">
           <div className="nav-brand ">
             {" "}
-           <a onClick={this.props.handleLogIn}><h1>TU Social</h1></a> 
+            <a onClick={this.props.handleLogIn}>
+              <h1>TU Social</h1>
+            </a>
           </div>
-          
+
           <div className="nav-item mr-auto ml-5 col-6">
             <input
-            className="form-control"
+              className="form-control"
               type="text"
               id="inputText"
               placeholder="Search for student, group or event"
             />
             <button className="btn black-color mt-1 ">Search</button>
           </div>
-          
 
-            
           <div className="h6 col nav-item ">
             <button
               type="submit"

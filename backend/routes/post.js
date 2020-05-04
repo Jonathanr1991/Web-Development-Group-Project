@@ -1,9 +1,16 @@
 const router = require("express").Router();
+const mongoose = require("mongoose");
 let Post = require("../models/post.model"); // mongoose model we created
 
 //used to return all posts
 router.route("/").get((req, res) => {
   Post.find()
+    .then((posts) => res.json(posts))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+//used to return all posts
+router.route("/userPost").post(async(req, res) => {
+  await Post.find({user: req.body.user})
     .then((posts) => res.json(posts))
     .catch((err) => res.status(400).json("Error: " + err));
 });
