@@ -78,14 +78,7 @@ export default class EditProfile extends Component {
               </div>
             </div>
             <br /> <br />
-            <div className="form-group">
-              <div className="col-md-3 col-sm-offset-2">
-                <div className="checkbox">
-                  <input type="checkbox" id="checkbox_1" />
-                  <label htmlFor="checkbox_1">Make this account public</label>
-                </div>
-              </div>
-            </div>
+            
             <div className="form-group">
               <div className="col-md-3 col-sm-offset-2">
                 <button type="submit" className="btn btn-primary">Submit</button>
