@@ -29,30 +29,16 @@ const initServer = async () => {
   app.use(express.static(path.join(__dirname, "build"))); //this may not be necessary?
 
   //BEGIN INTERRUPT usual server.js structure to set up in-memory database
-  var mongoServer;
-  try {
-    mongoServer = new MongoMemoryServer();
-  } catch (Error) {
-    console.log(Error);
-  }
-  var waitTime = 0;
-  var waitTimeMax = 10;
-  var interval = 100; //ms
-  while (mongoServer === undefined) {
-    waitTime += 1;
-    console.log(
-      `Trying to initialize and connect to mongo server - waitTime = ${waitTime}, waiting ${interval}ms (${waitTime}/${waitTimeMax})...`
-    );
-    if (waitTime === waitTimeMax) {
-      console.log("failed to connect to memory server, exiting");
-      process.exit(1);
-    }
-    setTimeout(() => {}, interval);
-  }
+  var mongoServer = new MongoMemoryServer();
+
+  const uri = await mongoServer.getUri();
+  const port = await mongoServer.getPort();
+  const dbPath = await mongoServer.getDbPath();
+  const dbName = await mongoServer.getDbName();
 
   //connects mongo to mongodb atlas
   //(old) try to connect to cloud, then try local, then just wait for cloud connection
-  mongoose.connect(mongoServer.getUri(), {
+  mongoose.connect(uri, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -97,7 +83,7 @@ describe("GET /user", () => {
   afterEach(() => {
     moxios.uninstall();
   });
-  test("It should fetch users from db", async () => {
+  /*test("It should fetch users from db", async () => {
     moxios.stubRequest(/\/user/, {
       status: 200,
       response: {
@@ -112,7 +98,7 @@ describe("GET /user", () => {
     expect(moxios.requests.mostRecent().url).toBe(
       "https://api.github.com/users/HugoDF"
     );
-  });
+  });*/
   test("It should 200 and return a transformed version of GitHub response", async () => {
     moxios.stubRequest(/\/user/, {
       status: 200,
