@@ -40,6 +40,7 @@ export default class NewsFeed extends Component {
       numberOfLikes: this.state.numberOfLikes,
       flag: this.state.flag,
       comments: this.state.comments,
+      time: Date.now(),
     };
 
     axios
@@ -57,7 +58,7 @@ export default class NewsFeed extends Component {
 
   render() {
     if (this.props.data.loggedIn && this.props.data.newsfeed) {
-      console.log(this.props.data.posts);
+      
       const postItems = this.props.data.posts.reverse().map((post) => (
         <div className="card my-3">
           <div className="card-header bg-white border-0 py-2">

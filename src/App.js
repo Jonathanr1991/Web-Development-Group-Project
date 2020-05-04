@@ -27,7 +27,8 @@ export default class App extends Component {
       editProfile: false,
       event: false,
       profile: false,
-      posts: []
+      posts: [],
+      personalPosts: [],
     };
   }
   handleLogIn() {
@@ -47,8 +48,9 @@ export default class App extends Component {
   handleUser(e) {
     this.setState({ user: e });
   }
-  handleGetPost(e){
-    this.setState({posts: e});
+
+  handleGetPost(e) {
+    this.setState({ posts: e });
   }
   handleEditProfile() {
     this.setState({
@@ -70,20 +72,17 @@ export default class App extends Component {
       profile: false,
     });
   }
-  handleProfile(){
-    
-      this.setState({
-        newsfeed: false,
-        chat: false,
-        group: false,
-        editProfile: false,
-        event: false,
-        profile: true,
-      });
-    
+  handleProfile() {
+    this.setState({
+      newsfeed: false,
+      chat: false,
+      group: false,
+      editProfile: false,
+      event: false,
+      profile: true,
+    });
   }
-  handleGroup(){
-    
+  handleGroup() {
     this.setState({
       newsfeed: false,
       chat: false,
@@ -92,27 +91,22 @@ export default class App extends Component {
       event: false,
       profile: false,
     });
-  
-}
-handleEvent(){
-    
-  this.setState({
-    newsfeed: false,
-    chat: false,
-    group: false,
-    editProfile: false,
-    event: true,
-    profile: false,
-  });
-
-}
-handleNewPost(e){
-  this.state.posts.push(e);
-
-}
+  }
+  handleEvent() {
+    this.setState({
+      newsfeed: false,
+      chat: false,
+      group: false,
+      editProfile: false,
+      event: true,
+      profile: false,
+    });
+  }
+  handleNewPost(e) {
+    this.state.posts.push(e);
+  }
 
   render() {
-    
     return (
       <Router>
         <div className="container">
@@ -124,9 +118,15 @@ handleNewPost(e){
             handleGetPost={this.handleGetPost.bind(this)}
           />
           <CreateUser data={this.state} />
-          <EditProfile data={this.state} />
-          <UserProfile data={this.state} />
-          
+          <EditProfile
+            data={this.state}
+            handleUser={this.handleUser.bind(this)}
+          />
+          <UserProfile
+            data={this.state}
+            handleEditProfile={this.handleEditProfile.bind(this)}
+          />
+
           <NewsFeed
             data={this.state}
             handleEditProfile={this.handleEditProfile.bind(this)}
@@ -137,8 +137,8 @@ handleNewPost(e){
             handleNewPost={this.handleNewPost.bind(this)}
           />
           <Chat data={this.state} />
-          <Group data={this.state}/>
-          <Event data={this.state}/>
+          <Group data={this.state} />
+          <Event data={this.state} />
         </div>
       </Router>
     );
