@@ -51,21 +51,19 @@ export default class NavBar extends Component {
             {" "}
            <a onClick={this.props.handleLogIn}><h1>TU Social</h1></a> 
           </div>
-          <div className="h6 nav-item col">
-          <button type="Profile" className="btn">Profile</button>
-          </div>
-          <div className="h6 nav-item col">
-          <button type="message" className="btn">Message</button>
-          </div>
-          <div className="h6 nav-item col">
+          
+          <div className="nav-item mr-auto ml-5 col-6">
             <input
+            className="form-control"
               type="text"
               id="inputText"
               placeholder="Search for student, group or event"
             />
-            <button className="btn black-color mt-3 ">Search</button>
+            <button className="btn black-color mt-1 ">Search</button>
           </div>
           
+
+            
           <div className="h6 col nav-item ">
             <button
               type="submit"
