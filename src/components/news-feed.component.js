@@ -67,7 +67,7 @@ export default class NewsFeed extends Component {
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           />
-          <link rel="stylesheet" href="page.css" />
+
           <header>
             <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-fbook">
               <div className="container c-navbar">
@@ -90,7 +90,10 @@ export default class NewsFeed extends Component {
                       <div className="d-flex justify-content-start">
                         <div className="img-circle"></div>
                         <div className="h7 ml-2">
-                          <a href="#" onClick={this.props.handleEditProfile}> Edit Profile</a>
+                          <a href="#" onClick={this.props.handleEditProfile}>
+                            {" "}
+                            Edit Profile
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -107,7 +110,9 @@ export default class NewsFeed extends Component {
                           />
                         </div>
                         <div className="h7 ml-2">
-                          <a href="#" onClick={this.props.handleProfile}>My Profile</a>
+                          <a href="#" onClick={this.props.handleProfile}>
+                            My Profile
+                          </a>
                           <div className="text-muted"> Hace 1 Hora</div>
                         </div>
                       </div>
@@ -116,13 +121,15 @@ export default class NewsFeed extends Component {
                 </div>
                 <div className="card my-3">
                   <div className="card-body p-2">
-                    <a href="#" onClick={this.props.handleChat}>Messages</a>
+                    <a href="#" onClick={this.props.handleChat}>
+                      <h3>Messages</h3>
+                    </a>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">
                         <div className="img-circle"></div>
                         <div className="h7 ml-2">
-                          <h3> Recent Chats</h3>
+                          <h5> Recent Messages</h5>
                         </div>
                       </div>
                     </div>
@@ -182,9 +189,83 @@ export default class NewsFeed extends Component {
                     {/* */}
                   </div>
                 </div>
+                {/* start of event card*/}
                 <div className="card my-3">
                   <div className="card-body p-2">
-                    <a href="#" onClick={this.props.handleGroup}>Groups</a>
+                    <a href="#" onClick={this.props.handleEvent}>
+                      <h3>Event</h3>
+                    </a>
+                    {/* */}
+                    <div className="mb-3">
+                      <div className="d-flex justify-content-start">
+                        <div className="img-circle"></div>
+                        <div className="h7 ml-2">
+                          <h5> Up Coming Events</h5>
+                        </div>
+                      </div>
+                    </div>
+                    {/* */}
+                    {/* */}
+                    <div className="mb-3">
+                      <div className="d-flex justify-content-start">
+                        <div>
+                          <img
+                            className="rounded-circle"
+                            width={45}
+                            src="https://picsum.photos/80/80/?random?image=5"
+                            alt=""
+                          />
+                        </div>
+                        <div className="h7 ml-2">
+                          <a href="#">John Smith</a>
+                          <div className="text-muted"> Hace 1 Hora</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mb-3">
+                      <div className="d-flex justify-content-start">
+                        <div>
+                          <img
+                            className="rounded-circle"
+                            width={45}
+                            src="https://picsum.photos/80/80/?random?image=4"
+                            alt=""
+                          />
+                        </div>
+                        <div className="h7 ml-2">
+                          <a href="#"> Bobby Hill</a>
+                          <div className="text-muted"> Hace 2 Hora</div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* */}
+                    {/* */}
+                    <div className="mb-3">
+                      <div className="d-flex justify-content-start">
+                        <div>
+                          <img
+                            className="rounded-circle"
+                            width={45}
+                            src="https://picsum.photos/80/80/?random?image=2"
+                            alt=""
+                          />
+                        </div>
+                        <div className="h7 ml-2">
+                          <a href="#"> Peter Griffin</a>
+                          <div className="text-muted"> Hace 2 Hora</div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* */}
+                  </div>
+                </div>
+                {/*end of Event Card*/}
+                <div className="card my-3">
+                  <div className="card-body p-2">
+                    <a href="#" onClick={this.props.handleGroup}>
+                      <h3>Groups</h3>
+                    </a>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">

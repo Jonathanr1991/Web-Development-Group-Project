@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./page.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
+import "./bootstrap3.min.css";
 import CreateUser from "./components/create-user.component";
 import Navbar from "./components/navbar.component";
 import EditProfile from "./components/edit-profile.component";

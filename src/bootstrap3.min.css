@@ -1,6 +1,4 @@
-.container{
-    max-width:900px;
-}
+
 .inbox_people {
 	background: #fff;
 	float: left;
@@ -28,7 +26,7 @@
 	display: inline-block;
 	text-align: right;
 	width: 60%;
-	padding:
+	
 }
 
 .headind_srch {
