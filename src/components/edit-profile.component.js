@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "../editProfile.css"; // maybe only 1 period? same folder? test tmr 
+
 
 export default class EditProfile extends Component {
     render() {
@@ -9,8 +9,7 @@ export default class EditProfile extends Component {
 
        
           <div>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous" />
-            <link href="editProfile.css" rel="stylesheet" type="text/css " /> 
+            
             <center> 
               <div className="panel panel-default">
                 <div className="panel-heading">
