@@ -90,7 +90,7 @@ export default class NewsFeed extends Component {
                       <div className="d-flex justify-content-start">
                         <div className="img-circle"></div>
                         <div className="h7 ml-2">
-                          <a onClick={this.props.handleEditProfile}> Edit Profile</a>
+                          <a href="#" onClick={this.props.handleEditProfile}> Edit Profile</a>
                         </div>
                       </div>
                     </div>
@@ -107,7 +107,7 @@ export default class NewsFeed extends Component {
                           />
                         </div>
                         <div className="h7 ml-2">
-                          <a href="#">My Profile</a>
+                          <a href="#" onClick={this.props.handleProfile}>My Profile</a>
                           <div className="text-muted"> Hace 1 Hora</div>
                         </div>
                       </div>
@@ -116,13 +116,13 @@ export default class NewsFeed extends Component {
                 </div>
                 <div className="card my-3">
                   <div className="card-body p-2">
-                    <a onClick={this.props.handleChat}>Messages</a>
+                    <a href="#" onClick={this.props.handleChat}>Messages</a>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">
                         <div className="img-circle"></div>
                         <div className="h7 ml-2">
-                          <a href="#"> Recent Chats</a>
+                          <h3> Recent Chats</h3>
                         </div>
                       </div>
                     </div>
