@@ -108,6 +108,7 @@ handleEvent(){
 }
 
   render() {
+    
     return (
       <Router>
         <div className="container">
@@ -121,6 +122,7 @@ handleEvent(){
           <CreateUser data={this.state} />
           <EditProfile data={this.state} />
           <UserProfile data={this.state} />
+          
           <NewsFeed
             data={this.state}
             handleEditProfile={this.handleEditProfile.bind(this)}

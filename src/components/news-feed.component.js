@@ -16,8 +16,8 @@ export default class NewsFeed extends Component {
       postImgPath: "",
       numberOfLikes: 0,
       flag: false,
-      comments: [],
-      posts: [],
+      formattedPost:[]
+     
     };
   }
 
@@ -53,96 +53,84 @@ export default class NewsFeed extends Component {
         console.log(err);
       });
   }
- 
+
 
   render() {
     if (this.props.data.loggedIn && this.props.data.newsfeed) {
-
-      const postItems = this.props.data.posts.reverse().map( (post) => 
-      <div className="card my-3">
-      <div className="card-header bg-white border-0 py-2">
-        <div className="d-flex justify-content-between">
-          <div className="d-flex justify-content-between">
-            <a href="#">
-              <img
-                className="rounded-circle"
-                src="https://picsum.photos/80/80/?random"
-                width={45}
-                alt=""
-              />
-            </a>
-            <div className="ml-3">
-              <div className="h6 m-0">
-                <a href="#">{post.user}</a>
+      console.log(this.props.data.posts);
+      const postItems = this.props.data.posts.reverse().map((post) => (
+        <div className="card my-3">
+          <div className="card-header bg-white border-0 py-2">
+            <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between">
+                <a href="#">
+                  <img
+                    className="rounded-circle"
+                    src="https://picsum.photos/80/80/?random"
+                    width={45}
+                    alt=""
+                  />
+                </a>
+                <div className="ml-3">
+                  <div className="h6 m-0">
+                    <a href="#">{post.user}</a>
+                  </div>
+                  <div className="text-muted h8">
+                    {post.time} <i className="fa fa-globe" aria-hidden="true" />
+                  </div>
+                </div>
               </div>
-              <div className="text-muted h8">
-                {post.time}{" "}
-                <i className="fa fa-globe" aria-hidden="true" />
+              <div className="dropdown">
+                <button
+                  className="btn btn-link dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                />
               </div>
             </div>
           </div>
-          <div className="dropdown">
-            <button
-              className="btn btn-link dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            />
-            
-          </div>
-        </div>
-      </div>
-      <div className="card-body pt-0 pb-2">
-        {post.postText}
-      </div>
-      
-      <div className="card-footer bg-white border-0 p-0">
-        <div className="d-flex justify-content-between align-items-center py-2 mx-3 border-bottom">
-          <div></div>
-          <div className="h7">
-            {" "}
-            3279 <a href="#"> comments</a> {post.numberOfLikes}{" "}
-            <a href="#">Likes</a>
-          </div>
-        </div>
-        <div className="d-flex justify-content-between align-items-center my-1">
-          <div className="col">
-            <button
-              type="button"
-              className="btn btn-fbook btn-block btn-sm"
-            >
-              {" "}
-              <i
-                className="fa fa-thumbs-up"
-                aria-hidden="true"
-              />{" "}
-              Like
-            </button>
-          </div>
-          <div className="col">
-            <button
-              type="button"
-              className="btn btn-fbook btn-block btn-sm"
-            >
-              <i className="fa fa-comment" aria-hidden="true" />{" "}
-              Comment
-            </button>
-          </div>
-          <div className="col">
-            <button
-              type="button"
-              className="btn btn-fbook btn-block btn-sm"
-            >
-              <i className="fa fa-share" aria-hidden="true" /> Share
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-        );
+          <div className="card-body pt-0 pb-2">{post.postText}</div>
 
+          <div className="card-footer bg-white border-0 p-0">
+            <div className="d-flex justify-content-between align-items-center py-2 mx-3 border-bottom">
+              <div></div>
+              <div className="h7">
+                {post.numberOfLikes} <a href="#">Likes</a>
+              </div>
+            </div>
+            <div className="d-flex justify-content-between align-items-center my-1">
+              <div className="col">
+                <button
+                  type="button"
+                  className="btn btn-fbook btn-block btn-sm"
+                >
+                  {" "}
+                  <i className="fa fa-thumbs-up" aria-hidden="true" /> Like
+                </button>
+              </div>
+              <div className="col">
+                <button
+                  type="button"
+                  className="btn btn-fbook btn-block btn-sm"
+                >
+                  <i className="fa fa-comment" aria-hidden="true" /> Comment
+                </button>
+              </div>
+              <div className="col">
+                <button
+                  type="button"
+                  className="btn btn-fbook btn-block btn-sm"
+                >
+                  <i className="fa fa-share" aria-hidden="true" /> Share
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ));
 
       return (
         <div>
@@ -193,7 +181,9 @@ export default class NewsFeed extends Component {
                           />
                         </div>
                         <div className="h7 ml-2">
-                          <a href="#" onClick={this.props.handleProfile}>My Profile</a>
+                          <a href="#" onClick={this.props.handleProfile}>
+                            My Profile
+                          </a>
                           <div className="text-muted"> 1 hour ago</div>
                         </div>
                       </div>
@@ -353,7 +343,6 @@ export default class NewsFeed extends Component {
                         <div className="img-circle"></div>
                         <div className="h7 ml-2">
                           <h5> My Groups</h5>
-                          
                         </div>
                       </div>
                     </div>
