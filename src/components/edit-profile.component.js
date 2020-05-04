@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 export default class EditProfile extends Component {
     render() {
       if(this.props.data.editProfile && this.props.data.loggedIn ){

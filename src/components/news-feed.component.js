@@ -110,10 +110,8 @@ export default class NewsFeed extends Component {
                           />
                         </div>
                         <div className="h7 ml-2">
-                          <a href="#" onClick={this.props.handleProfile}>
-                            My Profile
-                          </a>
-                          <div className="text-muted"> Hace 1 Hora</div>
+                          <a href="#" onClick={this.props.handleProfile}>My Profile</a>
+                          <div className="text-muted"> 1 hour ago</div>
                         </div>
                       </div>
                     </div>
