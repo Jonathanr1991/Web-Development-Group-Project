@@ -27,6 +27,7 @@ export default class App extends Component {
       editProfile: false,
       event: false,
       profile: false,
+      posts: []
     };
   }
   handleLogIn() {
@@ -45,6 +46,9 @@ export default class App extends Component {
   }
   handleUser(e) {
     this.setState({ user: e });
+  }
+  handleGetPost(e){
+    this.setState({posts: e});
   }
   handleEditProfile() {
     this.setState({
@@ -112,6 +116,7 @@ handleEvent(){
             handleLogIn={this.handleLogIn.bind(this)}
             handleLogOut={this.handleLogOut.bind(this)}
             handleUser={this.handleUser.bind(this)}
+            handleGetPost={this.handleGetPost.bind(this)}
           />
           <CreateUser data={this.state} />
           <EditProfile data={this.state} />
