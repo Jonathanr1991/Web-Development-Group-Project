@@ -52,10 +52,10 @@ export default class NavBar extends Component {
            <a onClick={this.props.handleLogIn}><h1>TU Social</h1></a> 
           </div>
           <div className="h6 nav-item col">
-            <a>Profile</a>
+          <button type="Profile" className="btn">Profile</button>
           </div>
           <div className="h6 nav-item col">
-            <a>Messages</a>
+          <button type="message" className="btn">Message</button>
           </div>
           <div className="h6 nav-item col">
             <input
@@ -63,7 +63,9 @@ export default class NavBar extends Component {
               id="inputText"
               placeholder="Search for student, group or event"
             />
+            <button className="btn black-color mt-3 ">Search</button>
           </div>
+          
           <div className="h6 col nav-item ">
             <button
               type="submit"

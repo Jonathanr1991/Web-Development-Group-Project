@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "../editProfile.css"; // maybe only 1 period? same folder? test tmr 
+import "../editProfile.css"; 
 
 export default class EditProfile extends Component {
     render() {
