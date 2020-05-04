@@ -105,6 +105,7 @@ export default class EditProfile extends Component {
                 <input
                   id="firstName"
                   type="text"
+                  placeholder="Update First Name"
                   className="col form-control "
                   //value={this.props.data.user.firstName}
                   onChange={this.onChangeFirstName}
@@ -113,6 +114,7 @@ export default class EditProfile extends Component {
 
                 <input
                   type="text"
+                  placeholder="Update Last Name"
                   className="col ml-2 form-control move-right"
                  // value={this.props.data.user.lastName}
                   onChange={this.onChangeLastName}
@@ -122,6 +124,7 @@ export default class EditProfile extends Component {
               <input
                 type="email"
                 className="form-control form-group"
+                placeholder="Update Email"
                 //value={this.props.data.user.email}
                 onChange={this.onChangeEmail}
               />
@@ -129,11 +132,13 @@ export default class EditProfile extends Component {
               <input
                 type="text"
                 className="form-control form-group"
+                placeholder="Update Major"
                // value={this.props.data.user.major}
                 onChange={this.onChangeMajor}
               />
               <textarea
                 className="form-control form-group"
+                placeholder="Update Bio"
                 //value={this.props.data.user.bio}
                 onChange={this.onChangeBio}
               />
