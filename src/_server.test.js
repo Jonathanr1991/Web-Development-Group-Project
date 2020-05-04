@@ -9,7 +9,7 @@ require("dotenv").config();
 describe("Loading express", function () {
   var server;
   beforeEach(function () {
-    server = require("../backend/server-testable", { bustCache: true });
+    server = require("../backend/server", { bustCache: true });
     server.setTimeout(5000);
   });
   afterEach(function () {
@@ -42,7 +42,7 @@ describe("GET /user/whatever", () => {
   var server;
   beforeEach(() => {
     moxios.install();
-    server = require("../backend/server-testable", { bustCache: true });
+    server = require("../backend/server", { bustCache: true });
     server.setTimeout(5000);
   });
   afterEach(() => {
