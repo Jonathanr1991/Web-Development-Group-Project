@@ -20,15 +20,20 @@ function makeServer() {
     .connect(uri, {
       useNewUrlParser: true,
       useCreateIndex: true,
-      useUnifiedTopology: false
-    }).catch((err) => {console.log(
+      useUnifiedTopology: false,
+    })
+    .catch((err) => {
+      console.log(
         "Got error connecting MongoDB instance at " + uri + " [" + err + "]"
-      );});
+      );
+    });
 
   var connection = mongoose.connection;
 
   connection.on("error", (err) => {
-    console.log("The previous message shouldn't be anything to be worried about if you're not trying to use the local db specifically - attempting to connect to remote MongoDB server...");
+    console.log(
+      "The previous message shouldn't be anything to be worried about if you're not trying to use the local db specifically - attempting to connect to remote MongoDB server..."
+    );
     mongoose.connect(process.env.ATLAS_URI, {
       //not sure what the idiomatic way of doing a backup connection is
       useNewUrlParser: true,
@@ -67,6 +72,20 @@ function makeServer() {
   var server = app.listen(port, () => {
     console.log("Server is running on port: " + port);
   });
+
+  process.on("SIGTERM", () => {
+    console.info("SIGTERM signal received.");
+    console.log("Closing http server.");
+    app.close(() => {
+      console.log("Http server closed.");
+      // boolean means [force], see in mongoose doc
+      mongoose.connection.close(false, () => {
+        console.log("MongoDb connection closed.");
+        process.exit(0);
+      });
+    });
+  });
+
   return server;
 }
 module.exports = makeServer();

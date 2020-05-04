@@ -9,7 +9,7 @@ require("dotenv").config();
 describe("Loading express", function () {
   var server;
   beforeEach(function () {
-    server = require("../backend/server", { bustCache: true });
+    server = require("../backend/server"); //, { bustCache: true });
     server.setTimeout(5000);
   });
   afterEach(function () {
@@ -42,8 +42,7 @@ describe("GET /user/whatever", () => {
   var server;
   beforeEach(() => {
     moxios.install();
-    server = require("../backend/server", { bustCache: true });
-    server.setTimeout(5000);
+    server = require("../backend/server"); //, { bustCache: true });
   });
   afterEach(() => {
     moxios.uninstall();
@@ -75,7 +74,7 @@ describe("GET /user/whatever", () => {
       password: "$2b$10$RIwnt.Hf3vJ5F3TjJI8Qx.6CrqdEhTBRKcbdOHk5ROfm.0SIx9ghi",
     });
   });
-  test("just for a single spec", function (done) {
+  /*test("just for a single spec", function (done) {
     //this is test is useless and partially here just for reference?
     moxios.withMock(function () {
       let onFulfilled = sinon.spy();
@@ -97,5 +96,5 @@ describe("GET /user/whatever", () => {
           });
       });
     });
-  });
+  });*/
 });
