@@ -24,6 +24,7 @@ export default class App extends Component {
       group: false,
       editProfile: false,
       event: false,
+      profile: false,
     };
   }
   handleLogIn() {
@@ -34,6 +35,7 @@ export default class App extends Component {
       group: false,
       editProfile: false,
       event: false,
+      profile: false,
     });
   }
   handleLogOut() {
@@ -49,6 +51,7 @@ export default class App extends Component {
       group: false,
       editProfile: true,
       event: false,
+      profile: false,
     });
   }
   handleChat() {
@@ -58,7 +61,20 @@ export default class App extends Component {
       group: false,
       editProfile: false,
       event: false,
+      profile: false,
     });
+  }
+  handleProfile(){
+    
+      this.setState({
+        newsfeed: false,
+        chat: false,
+        group: false,
+        editProfile: false,
+        event: false,
+        profile: true,
+      });
+    
   }
 
   render() {
@@ -73,10 +89,12 @@ export default class App extends Component {
           />
           <CreateUser data={this.state} />
           <EditProfile data={this.state} />
+          <UserProfile data={this.state} />
           <NewsFeed
             data={this.state}
             handleEditProfile={this.handleEditProfile.bind(this)}
             handleChat={this.handleChat.bind(this)}
+            handleProfile={this.handleProfile.bind(this)}
           />
           <Chat data={this.state} />
           <Route path="/group" exact component={Group} />
