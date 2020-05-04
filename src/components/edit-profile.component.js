@@ -6,7 +6,7 @@ export default class EditProfile extends Component {
 
         return ( 
           <div>
-            
+          
             <center> 
               <div className="panel panel-default" >
                 <div className="panel-heading" >
@@ -56,7 +56,7 @@ export default class EditProfile extends Component {
                     <textarea rows={3} className="form-control" defaultValue={""} />
                   </div>
                 </div>
-              </div>
+              
 
             <br /> <br />
             <center> 
@@ -85,11 +85,16 @@ export default class EditProfile extends Component {
                 <button type="reset" className="btn btn-default">Cancel</button>
               </div>
             </div>
+          
+            </div>
+            
+          
         );
           
-     // }else {
-       // return(
-         // <div></div>
-        //)
+      }else {
+       return(
+         <div></div>
+      );
       }
-    };
+    }
+  }
