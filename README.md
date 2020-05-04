@@ -1,5 +1,11 @@
 # "TU Social"
 
+---
+
+[Staging](https://thawing-escarpment-97776.herokuapp.com/) | [Production](https://cryptic-citadel-93431.herokuapp.com/)
+
+---
+
 TODO - badges here (i.e. build passing etc)
 
 _Please note this repository as of now has no official affiliation with either Towson University nor any of its dependencies (defined as of writing (5/20) under package.json, backend/package.json, etc)._
@@ -33,9 +39,17 @@ You can run `npm start` from the root directory (so not in backend/ or src/, etc
 - do something along the lines of `git remote set-url heroku (appname).herokuapp.com`
 - do a push of the code with `git push heroku master:master` (first master means you're on master locally, second should put it on heroku's master branch)
 
+### package.json
+
+WIP
+
+Local db normally runs `mongo test --eval "db.dropDatabase();"` before trying to start the local database.
+
 ### Testing
 
 WIP/TODO - Looking to use Moxios, Jest, react-scripts test, and MongoDB Memory Server
+
+If you have MongoDB installed locally, running a command `db.serverBuildInfo().modules` after initializing a mongod instance with i.e. `mongod --dbpath='./backend/data/db'` (from `initlocaldb` script in package.json) will let you know if your local version supports inMemory or not - this projet assumes community edition is installed as opposed to enterprise, so it doesn't use the `inMemory` option and thus inflates your local repo a bit (it's `.gitignore`'d so it'll be fine)
 
 ## Backend
 
