@@ -7,7 +7,6 @@ require("dotenv").config();
 
 function makeServer() {
   const app = express();
-  const port = 3000; // || process.env.PORT;
 
   app.use(cors());
   app.use(express.json());
@@ -64,9 +63,10 @@ function makeServer() {
     res.sendFile(path.join(__dirname + "/build/index.html"));
 });*/
 
-  var server = app.listen(port, () => {
-    console.log("Server is running on port: " + port);
-  });
-  return server;
+  // var server = app.listen(port, () => {
+  //   console.log("Server is running on port: " + port);
+  // });
+  //return server;
+  return app;
 }
-//module.exports = makeServer();
+module.exports = makeServer();

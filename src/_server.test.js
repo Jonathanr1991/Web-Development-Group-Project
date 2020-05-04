@@ -74,27 +74,4 @@ describe("GET /user/whatever", () => {
       password: "$2b$10$RIwnt.Hf3vJ5F3TjJI8Qx.6CrqdEhTBRKcbdOHk5ROfm.0SIx9ghi",
     });
   });
-  /*test("just for a single spec", function (done) {
-    //this is test is useless and partially here just for reference?
-    moxios.withMock(function () {
-      let onFulfilled = sinon.spy();
-      axios.get("/users/12345").then(onFulfilled);
-      moxios.wait(function () {
-        let request = moxios.requests.mostRecent();
-        request
-          .respondWith({
-            status: 200,
-            response: {
-              id: 12345,
-              firstName: "Fred",
-              lastName: "Flintstone",
-            },
-          })
-          .then(function () {
-            equal(onFulfilled.called, true);
-            done();
-          });
-      });
-    });
-  });*/
 });
