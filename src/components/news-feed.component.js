@@ -16,8 +16,7 @@ export default class NewsFeed extends Component {
       postImgPath: "",
       numberOfLikes: 0,
       flag: false,
-      formattedPost:[]
-     
+      formattedPost: [],
     };
   }
 
@@ -47,13 +46,14 @@ export default class NewsFeed extends Component {
       .post("/post/add", post)
       .then((res) => {
         console.log(res.data);
-        alert(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
 
+    this.setState({ postText: "" });
+    this.props.handleNewPost(post);
+  }
 
   render() {
     if (this.props.data.loggedIn && this.props.data.newsfeed) {

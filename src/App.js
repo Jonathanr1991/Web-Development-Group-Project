@@ -106,6 +106,10 @@ handleEvent(){
   });
 
 }
+handleNewPost(e){
+  this.state.posts.push(e);
+
+}
 
   render() {
     
@@ -130,6 +134,7 @@ handleEvent(){
             handleProfile={this.handleProfile.bind(this)}
             handleGroup={this.handleGroup.bind(this)}
             handleEvent={this.handleEvent.bind(this)}
+            handleNewPost={this.handleNewPost.bind(this)}
           />
           <Chat data={this.state} />
           <Group data={this.state}/>
