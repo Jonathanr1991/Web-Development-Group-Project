@@ -63,7 +63,9 @@ export default class NavBar extends Component {
               id="inputText"
               placeholder="Search for student, group or event"
             />
+            <button className="btn black-color mt-3 ">Search</button>
           </div>
+          
           <div className="h6 col nav-item ">
             <button
               type="submit"
