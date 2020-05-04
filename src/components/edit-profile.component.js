@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 import pic from "../img/user-profile-pic/default_profile.jpg";
 export default class EditProfile extends Component {
-<<<<<<< HEAD
-    render() {
-      if(this.props.data.editProfile && this.props.data.loggedIn) {
-=======
+
   constructor(props) {
     super(props);
->>>>>>> e22ded259f4d2910a5be971da16fa1fe9919c2bf
+
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangeFirstName = this.onChangeFirstName.bind(this);
@@ -153,17 +150,7 @@ export default class EditProfile extends Component {
                   Update Account
                 </button>
               </div>
-<<<<<<< HEAD
-            </div>
-        )
-          
-     }else {
-        return(
-         <div></div>
-        )
-      }
-    };
-=======
+
             </form>
           </div>
         </div>
@@ -173,4 +160,4 @@ export default class EditProfile extends Component {
     }
   }
 }
->>>>>>> e22ded259f4d2910a5be971da16fa1fe9919c2bf
+
