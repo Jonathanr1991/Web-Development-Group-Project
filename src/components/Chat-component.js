@@ -15,24 +15,7 @@ export default class Chat extends Component{
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
             <link rel="stylesheet" href="page.css" />
             <header>
-              <nav>
-                <div className="header">
-                  <img id="logo" src={logo} alt="Towson Logo" />
-                  <p>Tu Social</p>
-                  <div className="search">
-                    <input type="text" id="inputText" placeholder="Search" />
-                    <div className="search-icon">
-                      <img src="http://icons.iconarchive.com/icons/icons8/ios7/256/Very-Basic-Search-icon.png" />
-                    </div>
-                  </div>   
-                  <ul>
-                    <li style={{textAlign: 'center', fontSize: '30px'}}>
-                      <a href="profile.html" style={{fontSize: '20px', paddingRight: '10px'}}>Profile</a>
-                      <a href="newsfeed.html" style={{fontSize: '20px', paddingRight: '10px'}}>Home page</a>
-                    </li>		
-                  </ul>
-                </div>
-              </nav>
+              
             </header>
             <div className="messaging">
               <div className="inbox_msg">
