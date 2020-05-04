@@ -1,13 +1,66 @@
 import React, { Component } from "react";
 import "../page.css";
 import pic from "../img/user-profile-pic/default_profile.jpg";
+import axios from 'axios'
 
 // need to update navigation under <ul>
 // user profile
 export default class UserProfile extends Component {
+  constructor(props) {
+    super(props);
+    this.onChangeNumberOfLikes = this.onChangeNumberOfLikes.bind(this);
+    this.onChangePostText = this.onChangePostText.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.state = {
+      user: "",
+      postText: "",
+      postImgPath: "",
+      numberOfLikes: 0,
+      flag: false,
+      formattedPost: [],
+    };
+  }
+
+  onChangePostText(e) {
+    this.setState({
+      postText: e.target.value,
+    });
+  }
+
+  onChangeNumberOfLikes(e) {
+    this.setState({
+      numberOfLikes: e.target.value,
+    });
+  }
+  onSubmit(e) {
+    e.preventDefault();
+    const post = {
+      user: this.props.data.user._id,
+      postText: this.state.postText,
+      postImgPath: this.state.postImgPath,
+      numberOfLikes: this.state.numberOfLikes,
+      flag: this.state.flag,
+      comments: this.state.comments,
+      time: Date.now(),
+    };
+
+    axios
+      .post("/post/add", post)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    this.setState({ postText: "" });
+    this.props.handleNewPersonalPost(post);
+    this.props.handleNewPost(post);
+  }
   render() {
     if (this.props.data.loggedIn && this.props.data.profile) {
-      const postItems = this.props.data.posts.reverse().map((post) => (
+      const postItems = this.props.data.personalPosts.reverse().map((post) => (
         <div className="card my-3">
           <div className="card-header bg-white border-0 py-2">
             <div className="d-flex justify-content-between">

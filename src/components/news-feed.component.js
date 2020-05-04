@@ -58,7 +58,6 @@ export default class NewsFeed extends Component {
 
   render() {
     if (this.props.data.loggedIn && this.props.data.newsfeed) {
-      
       const postItems = this.props.data.posts.reverse().map((post) => (
         <div className="card my-3">
           <div className="card-header bg-white border-0 py-2">
@@ -267,6 +266,16 @@ export default class NewsFeed extends Component {
                     <a href="#" onClick={this.props.handleEvent}>
                       <h3>Events</h3>
                     </a>
+                    <div className="h6 col nav-item ">
+                      <button
+                        type="submit"
+                        //onClick={}
+                        className="btn black-color "
+                      >
+                        {" "}
+                        Create Event
+                      </button>
+                    </div>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">
@@ -338,6 +347,16 @@ export default class NewsFeed extends Component {
                     <a href="#" onClick={this.props.handleGroup}>
                       <h3>Groups</h3>
                     </a>
+                    <div className="h6 col nav-item ">
+                      <button
+                        type="submit"
+                        //onClick={}
+                        className="btn black-color "
+                      >
+                        {" "}
+                        Create Group
+                      </button>
+                    </div>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">

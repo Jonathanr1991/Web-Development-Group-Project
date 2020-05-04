@@ -9,9 +9,9 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 //used to return all posts
-router.route("/userPost").post(async(req, res) => {
-  await Post.find({user: req.body.user})
-    .then((posts) => res.json(posts))
+router.route("/userPost/:id").get((req, res) => {
+  Post.find({user: req.params.id})
+    .then((post) => res.json(post))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 // used to create a post
