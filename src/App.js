@@ -76,6 +76,30 @@ export default class App extends Component {
       });
     
   }
+  handleGroup(){
+    
+    this.setState({
+      newsfeed: false,
+      chat: false,
+      group: true,
+      editProfile: false,
+      event: false,
+      profile: false,
+    });
+  
+}
+handleEvent(){
+    
+  this.setState({
+    newsfeed: false,
+    chat: false,
+    group: false,
+    editProfile: false,
+    event: true,
+    profile: false,
+  });
+
+}
 
   render() {
     return (
@@ -95,10 +119,12 @@ export default class App extends Component {
             handleEditProfile={this.handleEditProfile.bind(this)}
             handleChat={this.handleChat.bind(this)}
             handleProfile={this.handleProfile.bind(this)}
+            handleGroup={this.handleGroup.bind(this)}
+            handleEvent={this.handleEvent.bind(this)}
           />
           <Chat data={this.state} />
-          <Route path="/group" exact component={Group} />
-          <Route path="/event" exact component={Event} />
+          <Group data={this.state}/>
+          <Event data={this.state}/>
         </div>
       </Router>
     );
