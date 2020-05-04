@@ -52,10 +52,10 @@ export default class NavBar extends Component {
            <a onClick={this.props.handleLogIn}><h1>TU Social</h1></a> 
           </div>
           <div className="h6 nav-item col">
-          <button type="profile" className="btn">Profile</button>
+          <button type="Profile" className="btn">Profile</button>
           </div>
           <div className="h6 nav-item col">
-          <button type="messages" className="btn">Message</button>
+          <button type="message" className="btn">Message</button>
           </div>
           <div className="h6 nav-item col">
             <input
