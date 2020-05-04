@@ -38,8 +38,15 @@ export default class NavBar extends Component {
         if (res.data.Message === "User Logged in") {
           this.props.handleLogIn();
           this.props.handleUser(res.data.user);
+          
+          //get all post after User Logs in
+          axios.get("/post").then((res) => {
+            this.props.handleGetPost(res.data);
+          });
         }
       });
+
+     
 
       this.setState({password: ""})
   }
