@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import pic from "../img/user-profile-pic/default_profile.jpg";
 export default class EditProfile extends Component {
+<<<<<<< HEAD
+    render() {
+      if(this.props.data.editProfile && this.props.data.loggedIn) {
+=======
   constructor(props) {
     super(props);
+>>>>>>> e22ded259f4d2910a5be971da16fa1fe9919c2bf
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangeFirstName = this.onChangeFirstName.bind(this);
@@ -105,6 +110,7 @@ export default class EditProfile extends Component {
                 <input
                   id="firstName"
                   type="text"
+                  placeholder="Update First Name"
                   className="col form-control "
                   //value={this.props.data.user.firstName}
                   onChange={this.onChangeFirstName}
@@ -113,6 +119,7 @@ export default class EditProfile extends Component {
 
                 <input
                   type="text"
+                  placeholder="Update Last Name"
                   className="col ml-2 form-control move-right"
                  // value={this.props.data.user.lastName}
                   onChange={this.onChangeLastName}
@@ -122,6 +129,7 @@ export default class EditProfile extends Component {
               <input
                 type="email"
                 className="form-control form-group"
+                placeholder="Update Email"
                 //value={this.props.data.user.email}
                 onChange={this.onChangeEmail}
               />
@@ -129,11 +137,13 @@ export default class EditProfile extends Component {
               <input
                 type="text"
                 className="form-control form-group"
+                placeholder="Update Major"
                // value={this.props.data.user.major}
                 onChange={this.onChangeMajor}
               />
               <textarea
                 className="form-control form-group"
+                placeholder="Update Bio"
                 //value={this.props.data.user.bio}
                 onChange={this.onChangeBio}
               />
@@ -143,6 +153,17 @@ export default class EditProfile extends Component {
                   Update Account
                 </button>
               </div>
+<<<<<<< HEAD
+            </div>
+        )
+          
+     }else {
+        return(
+         <div></div>
+        )
+      }
+    };
+=======
             </form>
           </div>
         </div>
@@ -152,3 +173,4 @@ export default class EditProfile extends Component {
     }
   }
 }
+>>>>>>> e22ded259f4d2910a5be971da16fa1fe9919c2bf

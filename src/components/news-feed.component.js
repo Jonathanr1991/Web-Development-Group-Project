@@ -218,7 +218,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#">John Smith</a>
-                          <div className="text-muted"> Hace 1 Hora</div>
+                          <div className="text-muted"> 1 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -235,7 +235,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Bobby Hill</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hours Ago</div>
                         </div>
                       </div>
                     </div>
@@ -253,7 +253,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Peter Griffin</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hours Ago</div>
                         </div>
                       </div>
                     </div>
@@ -299,7 +299,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#">John Smith</a>
-                          <div className="text-muted"> Hace 1 Hora</div>
+                          <div className="text-muted"> 1 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -316,7 +316,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Bobby Hill</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -334,7 +334,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Peter Griffin</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hours Ago</div>
                         </div>
                       </div>
                     </div>
@@ -380,7 +380,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#">Fraternities</a>
-                          <div className="text-muted"> Hace 1 Hora</div>
+                          <div className="text-muted"> 1 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -397,7 +397,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Security club</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -415,7 +415,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Career Center</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hour Ago</div>
                         </div>
                       </div>
                     </div>
