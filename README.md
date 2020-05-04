@@ -6,6 +6,7 @@ _Please note this repository as of now has no official affiliation with either T
 
 1. [Introduction](#introduction)
    1. [Building/deploying](#buildingdeploying)
+   2. [Testing](#testing)
 2. [Backend](#nodemon-serverjs)
    1. [Hosting](#hosting---incl-continuous-deployment)
    2. [CI](#continuous-integration---incl-continuous-delivery)
@@ -31,6 +32,10 @@ You can run `npm start` from the root directory (so not in backend/ or src/, etc
 - do `heroku create` after logging in, make note of the app "name" or w/e
 - do something along the lines of `git remote set-url heroku (appname).herokuapp.com`
 - do a push of the code with `git push heroku master:master` (first master means you're on master locally, second should put it on heroku's master branch)
+
+### Testing
+
+WIP/TODO - Looking to use Moxios, Jest, react-scripts test, and MongoDB Memory Server
 
 ## Backend
 
