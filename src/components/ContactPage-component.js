@@ -8,6 +8,7 @@ export default class Contact extends Component{
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
         {/*---- Include the above in your HEAD tag --------*/}
         <link rel="stylesheet" href="ContactPage.css" />
+        <form action="mailto:someone@example.com" method="post" encType ="text/plain">
         <div className="container contact">
           <div className="row">
             <div className="col-md-3">
@@ -45,13 +46,14 @@ export default class Contact extends Component{
                 </div>
                 <div className="form-group">        
                   <div className="col-sm-offset-2 col-sm-10">
-                    <button type="submit" className="btn btn-default">Submit</button>
+                    <button type="submit"  defaultValue = 'send'className="btn btn-default">Submit</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        </form>
       </div>
     );
   }
