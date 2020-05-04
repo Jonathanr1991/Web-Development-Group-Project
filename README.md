@@ -6,7 +6,7 @@
 
 ---
 
-TODO - badges here (i.e. build passing etc)
+[![Build Status](https://travis-ci.com/cosc484/tuSocial.svg?token=EGyPxkfz7MbVeLyJjgKq&branch=master)](https://travis-ci.com/cosc484/tuSocial)
 
 _Please note this repository as of now has no official affiliation with either Towson University nor any of its dependencies (defined as of writing (5/20) under package.json, backend/package.json, etc)._
 

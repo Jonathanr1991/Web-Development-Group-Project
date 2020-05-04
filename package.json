@@ -33,7 +33,7 @@
         "prod": "concurrently --kill-others-on-fail \"npm run server\" \"react-scripts start\"",
         "build": "concurrently --kill-others-on-fail \"react-scripts build\" \"cd backend && npm install\"",
         "test": "react-scripts test",
-        "testprod": "npm test -- --watchAll=false --verbose",
+        "testprod": "npm test -- --watchAll=false --verbose --detectOpenHandles --forceExit",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
