@@ -17,21 +17,15 @@ export default class Chat extends Component{
 
     onChangeMessageText(e){
       this.setState({
-
         message: e.target.value
       })
 
     };
 
-    onSubmit(e){
-    
-
-    }
 
     onSubmit(e) {
     e.preventDefault();
     const message = {
-      members: this.props.data.user._id,
       messages: this.state.messages, 
       time: Date.now(),
     };
@@ -47,7 +41,7 @@ export default class Chat extends Component{
 
     this.setState({ messages: "" });
     this.props.handleNewPost(message);
-  }
+  };
 
     render() {
       if( this.props.data.loggedIn && this.props.data.chat){
