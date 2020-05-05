@@ -13,6 +13,7 @@ import Group from "./components/group-component";
 import Event from "./components/event-component";
 import NewsFeed from "./components/news-feed.component";
 import Chat from "./components/Chat-component";
+import axios from "axios";
 
 export default class App extends Component {
   constructor(props) {
@@ -27,7 +28,8 @@ export default class App extends Component {
       editProfile: false,
       event: false,
       profile: false,
-      posts: []
+      posts: [],
+      personalPosts: [],
     };
   }
   handleLogIn() {
@@ -47,8 +49,9 @@ export default class App extends Component {
   handleUser(e) {
     this.setState({ user: e });
   }
-  handleGetPost(e){
-    this.setState({posts: e});
+
+  handleGetPost(e) {
+    this.setState({ posts: e });
   }
   handleEditProfile() {
     this.setState({
@@ -70,20 +73,68 @@ export default class App extends Component {
       profile: false,
     });
   }
-  handleProfile(){
-    
-      this.setState({
-        newsfeed: false,
-        chat: false,
-        group: false,
-        editProfile: false,
-        event: false,
-        profile: true,
-      });
-    
+  handleProfile(e) {
+    e.preventDefault();
+    this.setState({
+      newsfeed: false,
+      chat: false,
+      group: false,
+      editProfile: false,
+      event: false,
+      profile: true,
+    });
+    const formattedPost = [];
+  console.log(this.state.user._id);
+    axios
+      .get("/post/userPost/"+this.state.user._id)
+      .then((resp) => {
+        resp.data.forEach((post) => {
+          
+          axios.get("/user/" + post.user).then((res) => {
+           var months = [
+             "January",
+             "February",
+             "March",
+             "April",
+             "May",
+             "June",
+             "July",
+             "August",
+             "September",
+             "October",
+             "November",
+             "December",
+           ];
+           const newPost = {
+             _id: post._id,
+             user: res.data.firstName + " " + res.data.lastName,
+             postText: post.postText,
+             time:
+               months[new Date(post.time).getMonth()] +
+               " " +
+               new Date(post.time).getDate() +
+               ", " +
+               new Date(post.time).getFullYear() +
+               " " +
+               new Date(post.time).getHours() +
+               ":" +
+               new Date(post.time).getMinutes(),
+
+             numberOfLikes: post.numberOfLikes,
+           };
+
+           formattedPost.push(newPost);
+         });
+         console.log(formattedPost);
+         this.setState({personalPosts: formattedPost});
+       });
+
+       
+     });
+      
+      
   }
-  handleGroup(){
-    
+  handleGroup() {
     this.setState({
       newsfeed: false,
       chat: false,
@@ -92,23 +143,25 @@ export default class App extends Component {
       event: false,
       profile: false,
     });
-  
-}
-handleEvent(){
-    
-  this.setState({
-    newsfeed: false,
-    chat: false,
-    group: false,
-    editProfile: false,
-    event: true,
-    profile: false,
-  });
-
-}
+  }
+  handleEvent() {
+    this.setState({
+      newsfeed: false,
+      chat: false,
+      group: false,
+      editProfile: false,
+      event: true,
+      profile: false,
+    });
+  }
+  handleNewPost(e) {
+    this.state.posts.push(e);
+  }
+  handleNewPersonalPost(e) {
+    this.state.personalPosts.push(e);
+  }
 
   render() {
-    
     return (
       <Router>
         <div className="container">
@@ -120,9 +173,17 @@ handleEvent(){
             handleGetPost={this.handleGetPost.bind(this)}
           />
           <CreateUser data={this.state} />
-          <EditProfile data={this.state} />
-          <UserProfile data={this.state} />
-          
+          <EditProfile
+            data={this.state}
+            handleUser={this.handleUser.bind(this)}
+          />
+          <UserProfile
+            data={this.state}
+            handleEditProfile={this.handleEditProfile.bind(this)}
+            handleNewPersonalPost = {this.handleNewPersonalPost.bind(this)}
+            handleNewPost={this.handleNewPost.bind(this)}
+          />
+
           <NewsFeed
             data={this.state}
             handleEditProfile={this.handleEditProfile.bind(this)}
@@ -130,10 +191,11 @@ handleEvent(){
             handleProfile={this.handleProfile.bind(this)}
             handleGroup={this.handleGroup.bind(this)}
             handleEvent={this.handleEvent.bind(this)}
+            handleNewPost={this.handleNewPost.bind(this)}
           />
           <Chat data={this.state} />
-          <Group data={this.state}/>
-          <Event data={this.state}/>
+          <Group data={this.state} />
+          <Event data={this.state} />
         </div>
       </Router>
     );

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'user', required: true },
+  user: { type: String, required: true },
   postText: { type: String },
   postImgPath: { type: String },
   time: { type: Date, default: Date.now() },
@@ -10,7 +10,7 @@ const postSchema = new Schema({
   flag: { type: Boolean, default: false },
   comments: [
     {
-      postedBy: { type: Schema.Types.ObjectId, ref: 'user' },
+      postedBy: { type: String, ref: 'user' },
       text: { type: String },
       time: { type: Date, default: Date.now() },
       likes: { type: Number, default: '0' },

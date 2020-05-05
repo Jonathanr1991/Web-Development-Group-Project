@@ -44,7 +44,7 @@ export default class NavBar extends Component {
             const formattedPost = [];
 
             resp.data.forEach((post) => {
-              axios.get("/user/" + post.user).then((res) => {
+               axios.get("/user/" + post.user).then((res) => {
                 var months = [
                   "January",
                   "February",

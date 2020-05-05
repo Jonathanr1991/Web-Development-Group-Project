@@ -16,8 +16,7 @@ export default class NewsFeed extends Component {
       postImgPath: "",
       numberOfLikes: 0,
       flag: false,
-      formattedPost:[]
-     
+      formattedPost: [],
     };
   }
 
@@ -41,23 +40,24 @@ export default class NewsFeed extends Component {
       numberOfLikes: this.state.numberOfLikes,
       flag: this.state.flag,
       comments: this.state.comments,
+      time: Date.now(),
     };
 
     axios
       .post("/post/add", post)
       .then((res) => {
         console.log(res.data);
-        alert(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
 
+    this.setState({ postText: "" });
+    this.props.handleNewPost(post);
+  }
 
   render() {
     if (this.props.data.loggedIn && this.props.data.newsfeed) {
-      console.log(this.props.data.posts);
       const postItems = this.props.data.posts.reverse().map((post) => (
         <div className="card my-3">
           <div className="card-header bg-white border-0 py-2">
@@ -218,7 +218,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#">John Smith</a>
-                          <div className="text-muted"> Hace 1 Hora</div>
+                          <div className="text-muted"> 1 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -235,7 +235,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Bobby Hill</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hours Ago</div>
                         </div>
                       </div>
                     </div>
@@ -253,7 +253,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Peter Griffin</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hours Ago</div>
                         </div>
                       </div>
                     </div>
@@ -266,6 +266,16 @@ export default class NewsFeed extends Component {
                     <a href="#" onClick={this.props.handleEvent}>
                       <h3>Events</h3>
                     </a>
+                    <div className="h6 col nav-item ">
+                      <button
+                        type="submit"
+                        //onClick={}
+                        className="btn black-color "
+                      >
+                        {" "}
+                        Create Event
+                      </button>
+                    </div>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">
@@ -289,7 +299,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#">John Smith</a>
-                          <div className="text-muted"> Hace 1 Hora</div>
+                          <div className="text-muted"> 1 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -306,7 +316,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Bobby Hill</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -324,7 +334,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Peter Griffin</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hours Ago</div>
                         </div>
                       </div>
                     </div>
@@ -337,6 +347,16 @@ export default class NewsFeed extends Component {
                     <a href="#" onClick={this.props.handleGroup}>
                       <h3>Groups</h3>
                     </a>
+                    <div className="h6 col nav-item ">
+                      <button
+                        type="submit"
+                        //onClick={}
+                        className="btn black-color "
+                      >
+                        {" "}
+                        Create Group
+                      </button>
+                    </div>
                     {/* */}
                     <div className="mb-3">
                       <div className="d-flex justify-content-start">
@@ -360,7 +380,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#">Fraternities</a>
-                          <div className="text-muted"> Hace 1 Hora</div>
+                          <div className="text-muted"> 1 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -377,7 +397,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Security club</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hour Ago</div>
                         </div>
                       </div>
                     </div>
@@ -395,7 +415,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Career Center</a>
-                          <div className="text-muted"> Hace 2 Hora</div>
+                          <div className="text-muted"> 2 Hour Ago</div>
                         </div>
                       </div>
                     </div>
