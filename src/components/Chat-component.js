@@ -8,10 +8,10 @@ export default class Chat extends Component{
       this.onChangeMessageText = this.onChangeMessageText.bind(this);
       this.state={
         members: [],
-        messages:{
+        messages:[{
           sender: "",
           text: "",
-        }
+        }];      
       };
     };
 
@@ -51,7 +51,7 @@ export default class Chat extends Component{
     this.setState({ messages: "" });
     this.props.handleNewPost(message);
   }
-  
+
     render() {
       if( this.props.data.loggedIn && this.props.data.chat){
         return (
