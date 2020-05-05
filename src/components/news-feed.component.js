@@ -316,7 +316,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Bobby Hill</a>
-                          <div className="text-muted"> 2 Hour Ago</div>
+                          <div className="text-muted"> 2 Hours Ago</div>
                         </div>
                       </div>
                     </div>
@@ -397,7 +397,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Security club</a>
-                          <div className="text-muted"> 2 Hour Ago</div>
+                          <div className="text-muted"> 2 Hours Ago</div>
                         </div>
                       </div>
                     </div>
@@ -415,7 +415,7 @@ export default class NewsFeed extends Component {
                         </div>
                         <div className="h7 ml-2">
                           <a href="#"> Career Center</a>
-                          <div className="text-muted"> 2 Hour Ago</div>
+                          <div className="text-muted"> 2 Hours Ago</div>
                         </div>
                       </div>
                     </div>
@@ -446,7 +446,7 @@ export default class NewsFeed extends Component {
                           <img
                             className="rounded-circle"
                             width={50}
-                            src="https://picsum.photos/80/80/?random?image=4"
+                            src={pic}
                           />
                         </div>
                         <div className="col">
