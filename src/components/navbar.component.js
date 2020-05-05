@@ -25,14 +25,14 @@ export default class NavBar extends Component {
     });
   }
 
-  onSubmit(e) {
+  async onSubmit(e) {
     e.preventDefault();
 
     const user = {
       email: this.state.email,
       password: this.state.password,
     };
-    axios
+    await axios
       .post("/user/login", user) //was http://localhost:5000/user/login, would need to be http://localhost:3000/user/login due to new express port(/proxy)
       .then((res) => {
         if (res.data.Message === "User Logged in") {
@@ -40,10 +40,10 @@ export default class NavBar extends Component {
           this.props.handleUser(res.data.user);
 
           //get all post after User Logs in
-          axios.get("/post").then((resp) => {
+         axios.get("/post").then((resp) => {
             const formattedPost = [];
 
-            resp.data.forEach((post) => {
+           resp.data.forEach((post) => {
                axios.get("/user/" + post.user).then((res) => {
                 var months = [
                   "January",
@@ -85,6 +85,9 @@ export default class NavBar extends Component {
           });
         }
       });
+
+      axios.get("/event")
+      .then( (res) => this.props.handleEvents(res.data))
 
     this.setState({ password: "" });
   }

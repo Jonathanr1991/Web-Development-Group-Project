@@ -13,6 +13,7 @@ router.route("/add").post(async (req, res) => {
         const eventName = req.body.eventName;
         const eventLocation = req.body.eventLocation;
         const eventTime = req.body.eventTime;
+        const eventDate = req.body.eventDate;
         const eventImageUrl = req.body.eventImageUrl;
         const eventDescription = req.body.eventDescription;
         const guests = req.body.guests;
@@ -22,6 +23,7 @@ router.route("/add").post(async (req, res) => {
             eventName,
             eventLocation,
             eventTime,
+            eventDate ,
             eventImageUrl,
             eventDescription,
             guests,

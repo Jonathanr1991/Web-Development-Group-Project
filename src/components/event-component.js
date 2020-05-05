@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import pic from "../img/event-pics/Towson_logo.jpg"
 
 
 //Event layout page
@@ -6,230 +7,165 @@ import React, {Component} from 'react';
 export default class Event extends Component {
   render(){
     if( this.props.data.loggedIn && this.props.data.event){
-        return(
-           
-           
-                     
-        
-        
-            <div className="container-fluid gedf-wrapper">
-                <div className="row">
-                    <div className="col-md-3">
-                        <div className="card">
-                            <div className="card-body">
-                                <img id= "EventLogo" alt = "Group Logo"/>
-                                <div className="h5">Event Name </div>
-                                <div className="h6">Hosted by:</div>
-                                <div className="h7 text-muted">Date:</div>
-                                <div className="h7">Time: 
-                                </div>
-                                <div className="h8"> Description: 
-        
-                                </div>
+        const eventItems = this.props.data.events.map((event) =>(
+            <div className="card my-3">
+                      <div className="card-body p-2">
+                        <a href="#" onClick={this.props.handleEvent}>
+                          <h3>{event.eventName}</h3>
+                        </a>
+                        
+                        {/* */}
+                        <div className="mb-3">
+                          <div className="d-flex justify-content-start">
+                            <div className="img-circle"></div>
+                            <div className="h7 ml-2">
+                              <h5> {event.eventDate}</h5>
                             </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6 gedf-main">
-        
-                       
-                        <div className="card gedf-card">
-                            <div className="card-header">
-                                <ul className="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                                    <li className="nav-item">
-                                        <a className="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Make
-                                            a publication</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Images</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="card-body">
-                                <div className="tab-content" id="myTabContent">
-                                    <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-                                        <div className="form-group">
-                                            <label className="sr-only" for="message">post</label>
-                                            <textarea className="form-control" id="message" rows="3" placeholder="Event Updates"></textarea>
-                                        </div>
-        
-                                    </div>
-                                    <div className="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                        <div className="form-group">
-                                            <div className="custom-file">
-                                                <input type="file" className="custom-file-input" id="customFile"/>
-                                                <label className="custom-file-label" for="customFile">Upload image</label>
-                                            </div>
-                                        </div>
-                                        <div className="py-4"></div>
-                                    </div>
-                                </div>
-                                <div className="btn-toolbar justify-content-between">
-                                    <div className="btn-group">
-                                        <button type="submit" className="btn btn-primary">Post</button>
-                                    </div>
-                                    <div className="btn-group">
-                                        <button id="btnGroupDrop1" type="button" className="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            <i className="fa fa-globe"></i>
-                                        </button>
-                                        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-                                            <a className="dropdown-item" href="#"><i className="fa fa-globe"></i> Public</a>
-                                            <a className="dropdown-item" href="#"><i className="fa fa-users"></i> Friends</a>
-                                            <a className="dropdown-item" href="#"><i className="fa fa-user"></i> Just me</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       
-                        <div className="card gedf-card">
-                            <div className="card-header">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="mr-2">
-                                            <img className="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""/>
-                                        </div>
-                                        <div className="ml-2">
-                                            <div className="h5 m-0">Event Name</div>
-                                            <div className="h7 text-muted">Hosted by: </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="dropdown">
-                                            <button className="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i className="fa fa-ellipsis-h"></i>
-                                            </button>
-                                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                                <div className="h6 dropdown-header">Configuration</div>
-                                                <a className="dropdown-item" href="#">Save</a>
-                                                <a className="dropdown-item" href="#">Hide</a>
-                                                <a className="dropdown-item" href="#">Report</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                            </div>
-                            <div className="card-body">
-                                <div className="text-muted h7 mb-2"> <i className="fa fa-clock-o"></i>Date: </div>
-                                <a className="card-link" href="#">
-                                    <h5 className="card-title"></h5>
-                                </a>
-        
-                                <p className="card-text">
-                                        Information or posts regarding the group 
-                                </p>
-                            </div>
-                            <div className="card-footer">
-                                <a href="#" className="card-link"><i className="fa fa-gittip"></i> Like</a>
-                                <a href="#" className="card-link"><i className="fa fa-comment"></i> Comment</a>
-                                <a href="#" className="card-link"><i className="fa fa-mail-forward"></i> Share</a>
-                            </div>
+                          </div>
                         </div>
                         
-                        <div className="card gedf-card">
-                            <div className="card-header">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="mr-2">
-                                            <img className="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""/>
-                                        </div>
-                                        <div className="ml-2">
-                                            <div className="h5 m-0">Event Name </div>
-                                            <div className="h7 text-muted">Hosted by: </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="dropdown">
-                                            <button className="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i className="fa fa-ellipsis-h"></i>
-                                            </button>
-                                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                                <div class="h6 dropdown-header">Configuration</div>
-                                                <a className="dropdown-item" href="#">Save</a>
-                                                <a className="dropdown-item" href="#">Hide</a>
-                                                <a className="dropdown-item" href="#">Report</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                            </div>
-                            <div className="card-body">
-                                <div className="text-muted h7 mb-2"> <i className="fa fa-clock-o"></i> Date: </div>
-                                <a className="card-link" href="#">
-                                    <h5 className="card-title"> </h5>
-                                </a>
-        
-                                <p className="card-text">
-                                    Information or posts regarding the group 
-                                </p>
-                
-                            </div>
-                            <div className="card-footer">
-                                <a href="#" className="card-link"><i className="fa fa-gittip"></i> Like</a>
-                                <a href="#" className="card-link"><i className="fa fa-comment"></i> Comment</a>
-                                <a href="#" className="card-link"><i className="fa fa-mail-forward"></i> Share</a>
-                            </div>
-                        </div>
-                        
-                        <div className="card gedf-card">
-                            <div className="card-header">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="mr-2">
-                                            <img className="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""/>
-                                        </div>
-                                        <div className="ml-2">
-                                            <div className="h5 m-0">Event Name </div>
-                                            <div className="h7 text-muted">Hosted by: </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="dropdown">
-                                            <button className="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i className="fa fa-ellipsis-h"></i>
-                                            </button>
-                                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                                <div className="h6 dropdown-header">Configuration</div>
-                                                <a className="dropdown-item" href="#">Save</a>
-                                                <a className="dropdown-item" href="#">Hide</a>
-                                                <a className="dropdown-item" href="#">Report</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
+                      </div>
                     </div>
-            
-                     
-        
-        
-        
-                 
-                    <div className="col-md-3">
-                        <div className="card gedf-card">
-                            <div className="card-body">
-                                <h5 className="card-title">Groups</h5>
-                                <h6 className="card-subtitle mb-2 text-muted">Group1</h6>
-                                <h6 className="card-subtitle mb-2 text-muted">Commencement 2020 </h6>
-                                <p className="card-text">This will be used to quickly link to the groups you are in.</p>
-                                <a href="#" className="card-link">Invite Friends</a>
-                                <a href="#" className="card-link">Group Page</a>
-                            </div>
-                        </div>        
-                    </div>
-                </div>
-            </div>  
-        
-        
-            );
-    }else {
-        return (
+
+        ));
+
+        const eventDetailedPage = ()=> (
             <div></div>
-        )
-    }
+        );
+         
     
-  }
-}
+          return (
+            <div>
+              <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+              />
+    
+              <header>
+                <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-fbook">
+                  <div className="container c-navbar">
+                    <a className="navbar-brand" href="#"></a>
+                  </div>
+                </nav>
+              </header>
+    
+              <div className="col ">
+                <div className="row">
+                  <div className="col">
+
+                  <div className="card my-3">
+                      <div className="card-body p-2">
+                        <a href="#" onClick={this.props.handleEvent}>
+                          <h3>Events</h3>
+                        </a>
+                        <div className="h6 col nav-item ">
+                          <button
+                            type="submit"
+                            //onClick={}
+                            className="btn black-color "
+                          >
+                            {" "}
+                            Create Event
+                          </button>
+                        </div>
+                        
+                      </div>
+                    </div>
+
+                  
+                    {eventItems}
+                    
+                  </div>
+                  <div className="col-lg-8">
+                    <form onSubmit={this.onSubmit}>
+                      <div className="card my-3">
+                        <div className="card-header">
+                          <ul className="nav nav-tabs card-header-tabs nav-fill">
+                            <li className="nav-item">
+                              <a className="nav-link active" href="#">
+                                Create Post
+                              </a>
+                            </li>
+                            <li className="nav-item">
+                              <a className="nav-link" href="#">
+                                Upload Photo
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="card-body py-2">
+                          <div className="d-flex">
+                            <div>
+                              <img
+                                className="rounded-circle"
+                                width={50}
+                                src="https://picsum.photos/80/80/?random?image=4"
+                              />
+                            </div>
+                            <div className="col">
+                              <div className="form-group mb-0">
+                                <label
+                                  className="sr-only"
+                                  htmlFor="exampleFormControlTextarea1"
+                                >
+                                  Example textarea
+                                </label>
+                                <textarea
+                                  className="form-control border-0"
+                                  id="exampleFormControlTextarea1"
+                                  rows={2}
+                                  placeholder="What are you thinking?"
+                                  defaultValue={""}
+                                  onChange={this.onChangePostText}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="card-footer p-2">
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div className="col">
+                              <button
+                                type="button"
+                                className="btn btn-fposts btn-block btn-sm"
+                              >
+                                {" "}
+                                <i className="fa fa-list" aria-hidden="true" />{" "}
+                                Documents
+                              </button>
+                            </div>
+                            <div className="col">
+                              <button
+                                type="button"
+                                className="btn btn-fposts btn-block btn-sm"
+                              >
+                                <i className="fa fa-picture-o" aria-hidden="true" />{" "}
+                                Photos
+                              </button>
+                            </div>
+                            <div className="col">
+                              <button
+                                type="submit"
+                                className="btn btn-fposts btn-block btn-sm"
+                              >
+                                Post
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+    
+                    {/* ITEM */}
+                    {eventDetailedPage}
+                    {/* ITEM */}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        } else {
+          return <div></div>;
+        }
+      }
+    }

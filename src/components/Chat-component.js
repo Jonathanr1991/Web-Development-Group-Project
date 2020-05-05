@@ -13,7 +13,7 @@ export default class Chat extends Component{
 
     onChangeMessageText(e){
       this.setState({
-        message: e.target.value;
+        message: e.target.value
       })
     };
 
