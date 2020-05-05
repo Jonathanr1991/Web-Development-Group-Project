@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from "axios";
 
 export default class Chat extends Component{
 
@@ -6,24 +7,49 @@ export default class Chat extends Component{
       super(props);
       this.onChangeMessageText = this.onChangeMessageText.bind(this);
       this.state={
-        user: "",
-        message: ""
+        members: [],
+        messages:{
+          sender: "",
+          text: "",
+        }
       };
     };
 
     onChangeMessageText(e){
       this.setState({
         message: e.target.value;
-      })
+      });
     };
 
     onSubmit(e){
       const messageItem = {
-        user = this.props.data.user._id,
-        message = this.state.message
+        members = this.props.data.user._id,
+        messages = this.state.messages
       };
 
     }
+
+    onSubmit(e) {
+    e.preventDefault();
+    const message = {
+      members: this.props.data.user._id,
+      messages: this.state.messages, 
+      time: Date.now(),
+    };
+
+    axios
+      .post("/message/add", message)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    this.setState({ messages: "" });
+    this.props.handleNewPost(message);
+  }
+  
     render() {
       if( this.props.data.loggedIn && this.props.data.chat){
         return (
