@@ -11,7 +11,7 @@ export default class Chat extends Component{
         messages:[{
           sender: "",
           text: "",
-        }];      
+        }]     
       };
     };
 
@@ -24,10 +24,7 @@ export default class Chat extends Component{
     };
 
     onSubmit(e){
-      const messageItem = {
-        members = this.props.data.user._id,
-        messages = this.state.messages
-      };
+    
 
     }
 
