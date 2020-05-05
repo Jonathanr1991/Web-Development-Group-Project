@@ -17,40 +17,31 @@ export default class Chat extends Component{
 
     onChangeMessageText(e){
       this.setState({
-
         message: e.target.value
       })
 
     };
 
-    /*onSubmit(e){
-      const messageItem = {
-        members = this.props.data.user._id,
-        messages = this.state.messages
-      };
 
-    }
-
-    /*onSubmit(e) {
+    onSubmit(e) {
     e.preventDefault();
     const message = {
-      members: this.props.data.user._id,
       messages: this.state.messages, 
       time: Date.now(),
-    };*/
+    };
 
-    /*axios
+    axios
       .post("/message/add", message)
       .then((res) => {
         console.log(res.data);
-      });
+      })
       .catch((err) => {
         console.log(err);
       });
 
     this.setState({ messages: "" });
     this.props.handleNewPost(message);
-  };*/
+  };
 
     render() {
       if( this.props.data.loggedIn && this.props.data.chat){
