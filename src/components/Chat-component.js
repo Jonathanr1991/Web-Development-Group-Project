@@ -1,6 +1,29 @@
 import React, {Component} from 'react';
 
 export default class Chat extends Component{
+
+    constructor(props){
+      super(props);
+      this.onChangeMessageText = this.onChangeMessageText.bind(this);
+      this.state={
+        user: "",
+        message: ""
+      };
+    };
+
+    onChangeMessageText(e){
+      this.setState({
+        message: e.target.value;
+      })
+    };
+
+    onSubmit(e){
+      const messageItem = {
+        user = this.props.data.user._id,
+        message = this.state.message
+      };
+
+    }
     render() {
       if( this.props.data.loggedIn && this.props.data.chat){
         return (
