@@ -31,13 +31,13 @@ export default class Chat extends Component{
 
     }
 
-    onSubmit(e) {
+    /*onSubmit(e) {
     e.preventDefault();
     const message = {
       members: this.props.data.user._id,
       messages: this.state.messages, 
       time: Date.now(),
-    };
+    };*/
 
     axios
       .post("/message/add", message)
