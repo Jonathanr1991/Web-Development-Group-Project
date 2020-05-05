@@ -11,7 +11,7 @@ export default class Chat extends Component{
         messages:[{
           sender: "",
           text: "",
-        }];      
+        }]     
       };
     };
 
@@ -23,7 +23,7 @@ export default class Chat extends Component{
 
     };
 
-    onSubmit(e){
+    /*onSubmit(e){
       const messageItem = {
         members = this.props.data.user._id,
         messages = this.state.messages
@@ -39,18 +39,18 @@ export default class Chat extends Component{
       time: Date.now(),
     };*/
 
-    axios
+    /*axios
       .post("/message/add", message)
       .then((res) => {
         console.log(res.data);
-      })
+      });
       .catch((err) => {
         console.log(err);
       });
 
     this.setState({ messages: "" });
     this.props.handleNewPost(message);
-  }
+  };*/
 
     render() {
       if( this.props.data.loggedIn && this.props.data.chat){
