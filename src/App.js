@@ -83,18 +83,56 @@ export default class App extends Component {
       event: false,
       profile: true,
     });
-  
+    const formattedPost = [];
   console.log(this.state.user._id);
     axios
       .get("/post/userPost/"+this.state.user._id)
-      .then((res) => {
-        this.setState({personalPosts: res.data }, () =>{
-          console.log(res.data);
-        });
-        
-      }
+      .then((resp) => {
+        resp.data.forEach((post) => {
+          
+          axios.get("/user/" + post.user).then((res) => {
+           var months = [
+             "January",
+             "February",
+             "March",
+             "April",
+             "May",
+             "June",
+             "July",
+             "August",
+             "September",
+             "October",
+             "November",
+             "December",
+           ];
+           const newPost = {
+             _id: post._id,
+             user: res.data.firstName + " " + res.data.lastName,
+             postText: post.postText,
+             time:
+               months[new Date(post.time).getMonth()] +
+               " " +
+               new Date(post.time).getDate() +
+               ", " +
+               new Date(post.time).getFullYear() +
+               " " +
+               new Date(post.time).getHours() +
+               ":" +
+               new Date(post.time).getMinutes(),
+
+             numberOfLikes: post.numberOfLikes,
+           };
+
+           formattedPost.push(newPost);
+         });
+         console.log(formattedPost);
+         this.setState({personalPosts: formattedPost});
+       });
+
+       
+     });
       
-      );
+      
   }
   handleGroup() {
     this.setState({
